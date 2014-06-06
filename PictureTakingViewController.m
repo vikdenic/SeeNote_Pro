@@ -86,7 +86,7 @@
 
 #pragma mark - Unwind Segue
 
-- (IBAction)unwindSegue:(UIStoryboardSegue *)sender
+- (IBAction)unwindSegueToPictureTakingViewController:(UIStoryboardSegue *)sender
 {
     //coming from SaveViewController
 }
