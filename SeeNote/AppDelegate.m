@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MasterViewController.h"
 
 @implementation AppDelegate
 
@@ -20,6 +21,9 @@
     // Override point for customization after application launch
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    [self.window makeKeyAndVisible];
+    MasterViewController *controller  = (MasterViewController *)self.window.rootViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+
     return YES;
 }
 

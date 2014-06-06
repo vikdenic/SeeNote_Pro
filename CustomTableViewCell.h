@@ -10,4 +10,8 @@
 
 @interface CustomTableViewCell : UITableViewCell
 
+@property UILabel *categoryLabel; //NEEDS IBOUTLET
+@property UILabel *dateLabel; //NEEDS IBOUTLET
+@property UIImageView *cellImageView; //NEEDS IBOUTLET
+
 @end

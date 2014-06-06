@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UIViewController <NSFetchedResultsControllerDelegate>
+
+// Efficiently manages the results returned from a Core Data fetch request to provide data for a UITableView object.
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+// Manages a collection of managed objects.
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
