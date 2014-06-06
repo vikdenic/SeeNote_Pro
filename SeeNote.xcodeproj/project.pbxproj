@@ -22,6 +22,9 @@
 		93C7F7C819414A0400D02AC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7AC19414A0400D02AC9 /* CoreData.framework */; };
 		93C7F7D019414A0400D02AC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93C7F7CE19414A0400D02AC9 /* InfoPlist.strings */; };
 		93C7F7D219414A0400D02AC9 /* SeeNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7D119414A0400D02AC9 /* SeeNoteTests.m */; };
+		93C7F7DC19414A2700D02AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C7F7DB19414A2700D02AC9 /* Main.storyboard */; };
+		93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7DE19414AE200D02AC9 /* MasterViewController.m */; };
+		93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		93C7F7CD19414A0400D02AC9 /* SeeNoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeeNoteTests-Info.plist"; sourceTree = "<group>"; };
 		93C7F7CF19414A0400D02AC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93C7F7D119414A0400D02AC9 /* SeeNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeeNoteTests.m; sourceTree = "<group>"; };
+		93C7F7DB19414A2700D02AC9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		93C7F7DD19414AE200D02AC9 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
+		93C7F7DE19414AE200D02AC9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
+		93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = ../CustomTableViewCell.h; sourceTree = "<group>"; };
+		93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = ../CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 		93C7F79A19414A0400D02AC9 = {
 			isa = PBXGroup;
 			children = (
+				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
 				93C7F7AE19414A0400D02AC9 /* SeeNote */,
 				93C7F7CB19414A0400D02AC9 /* SeeNoteTests */,
 				93C7F7A519414A0400D02AC9 /* Frameworks */,
@@ -115,6 +124,10 @@
 		93C7F7AE19414A0400D02AC9 /* SeeNote */ = {
 			isa = PBXGroup;
 			children = (
+				93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */,
+				93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */,
+				93C7F7DD19414AE200D02AC9 /* MasterViewController.h */,
+				93C7F7DE19414AE200D02AC9 /* MasterViewController.m */,
 				93C7F7B719414A0400D02AC9 /* AppDelegate.h */,
 				93C7F7B819414A0400D02AC9 /* AppDelegate.m */,
 				93C7F7BD19414A0400D02AC9 /* Images.xcassets */,
@@ -228,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C7F7DC19414A2700D02AC9 /* Main.storyboard in Resources */,
 				93C7F7B319414A0400D02AC9 /* InfoPlist.strings in Resources */,
 				93C7F7BE19414A0400D02AC9 /* Images.xcassets in Resources */,
 			);
@@ -248,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
+				93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */,
 				93C7F7B519414A0400D02AC9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
