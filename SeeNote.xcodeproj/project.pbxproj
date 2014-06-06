@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60765E4619414E8000C75C13 /* PictureTakingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4519414E8000C75C13 /* PictureTakingViewController.m */; };
+		60765E49194158F700C75C13 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E48194158F700C75C13 /* SaveViewController.m */; };
 		93C7F7A719414A0400D02AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A619414A0400D02AC9 /* Foundation.framework */; };
 		93C7F7A919414A0400D02AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */; };
 		93C7F7AB19414A0400D02AC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7AA19414A0400D02AC9 /* UIKit.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60765E4419414E8000C75C13 /* PictureTakingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureTakingViewController.h; path = ../PictureTakingViewController.h; sourceTree = "<group>"; };
+		60765E4519414E8000C75C13 /* PictureTakingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureTakingViewController.m; path = ../PictureTakingViewController.m; sourceTree = "<group>"; };
+		60765E47194158F700C75C13 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
+		60765E48194158F700C75C13 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
 		93C7F7A319414A0400D02AC9 /* SeeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7F7A619414A0400D02AC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,7 +62,7 @@
 		93C7F7CD19414A0400D02AC9 /* SeeNoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeeNoteTests-Info.plist"; sourceTree = "<group>"; };
 		93C7F7CF19414A0400D02AC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93C7F7D119414A0400D02AC9 /* SeeNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeeNoteTests.m; sourceTree = "<group>"; };
-		93C7F7DB19414A2700D02AC9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		93C7F7DB19414A2700D02AC9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		93C7F7DD19414AE200D02AC9 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
 		93C7F7DE19414AE200D02AC9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
 		93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = ../CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -92,7 +98,6 @@
 		93C7F79A19414A0400D02AC9 = {
 			isa = PBXGroup;
 			children = (
-				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
 				93C7F7AE19414A0400D02AC9 /* SeeNote */,
 				93C7F7CB19414A0400D02AC9 /* SeeNoteTests */,
 				93C7F7A519414A0400D02AC9 /* Frameworks */,
@@ -126,6 +131,11 @@
 			children = (
 				93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */,
 				93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */,
+				60765E4419414E8000C75C13 /* PictureTakingViewController.h */,
+				60765E4519414E8000C75C13 /* PictureTakingViewController.m */,
+				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
+				60765E47194158F700C75C13 /* SaveViewController.h */,
+				60765E48194158F700C75C13 /* SaveViewController.m */,
 				93C7F7DD19414AE200D02AC9 /* MasterViewController.h */,
 				93C7F7DE19414AE200D02AC9 /* MasterViewController.m */,
 				93C7F7B719414A0400D02AC9 /* AppDelegate.h */,
@@ -263,10 +273,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
+				60765E4619414E8000C75C13 /* PictureTakingViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
 				93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */,
 				93C7F7B519414A0400D02AC9 /* main.m in Sources */,
+				60765E49194158F700C75C13 /* SaveViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +475,7 @@
 				93C7F7D719414A0400D02AC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93C7F7D819414A0400D02AC9 /* Build configuration list for PBXNativeTarget "SeeNoteTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +484,7 @@
 				93C7F7DA19414A0400D02AC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
