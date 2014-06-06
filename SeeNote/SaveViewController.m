@@ -17,7 +17,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+
+#pragma mark- Action
+
+- (IBAction)onSaveButtonTapped:(id)sender
+{
+    //here we need to save both the picture and the text to that instance of an entity object and hook the action up
 }
 
 @end

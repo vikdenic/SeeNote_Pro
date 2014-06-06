@@ -11,6 +11,7 @@
 		60765E49194158F700C75C13 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E48194158F700C75C13 /* SaveViewController.m */; };
 		60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */; };
 		60765E4E194178D100C75C13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60765E4D194178D100C75C13 /* MapKit.framework */; };
+		60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */; };
 		93C7F7A719414A0400D02AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A619414A0400D02AC9 /* Foundation.framework */; };
 		93C7F7A919414A0400D02AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */; };
 		93C7F7AB19414A0400D02AC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7AA19414A0400D02AC9 /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 		60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAllPicNotesViewController.m; sourceTree = "<group>"; };
 		60765E4D194178D100C75C13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		60765E4F19418A4300C75C13 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualPicNoteViewController.h; sourceTree = "<group>"; };
+		60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualPicNoteViewController.m; sourceTree = "<group>"; };
 		93C7F7A319414A0400D02AC9 /* SeeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7F7A619414A0400D02AC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +149,8 @@
 				60765E4419414E8000C75C13 /* PictureTakingViewController.h */,
 				60765E4519414E8000C75C13 /* PictureTakingViewController.m */,
 				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
+				60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */,
+				60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */,
 				60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */,
 				60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */,
 				60765E47194158F700C75C13 /* SaveViewController.h */,
@@ -296,6 +301,7 @@
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
 				93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */,
 				93C7F7B519414A0400D02AC9 /* main.m in Sources */,
+				60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */,
 				60765E49194158F700C75C13 /* SaveViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

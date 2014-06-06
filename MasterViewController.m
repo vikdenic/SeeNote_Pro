@@ -89,20 +89,4 @@
     
 }
 
-#pragma mark - The Floating Button - Don't touch please haha it took like an hour
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGRect frame = self.floatingView.frame;
-//    frame.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - self.floatingView.frame.size.height;
-//    frame.origin.x = self.view.frame.origin.x +200;
-    frame.origin.y = scrollView.frame.origin.y +440;
-    self.floatingView.frame = frame;
-
-    [self.view bringSubviewToFront:self.floatingView];
-}
-
-
-
-
-
 @end
