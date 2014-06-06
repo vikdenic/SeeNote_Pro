@@ -12,7 +12,7 @@
 
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property UITableView *tableView; //NEEDS IBOUTLET
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -34,14 +34,15 @@
     NSSortDescriptor *sortDescriptorByDate = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptorByDate, nil];
 
-    self.fetchedResultsController =[[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+//    self.fetchedResultsController =[[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 
     [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.fetchedResultsController.sections[section] numberOfObjects];
+//    return [self.fetchedResultsController.sections[section] numberOfObjects];
+    return 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
