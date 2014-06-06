@@ -25,6 +25,7 @@
 		93C7F7DC19414A2700D02AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C7F7DB19414A2700D02AC9 /* Main.storyboard */; };
 		93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7DE19414AE200D02AC9 /* MasterViewController.m */; };
 		93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */; };
+		93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7E4194155C400D02AC9 /* Picnote.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		93C7F7DE19414AE200D02AC9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
 		93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = ../CustomTableViewCell.h; sourceTree = "<group>"; };
 		93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = ../CustomTableViewCell.m; sourceTree = "<group>"; };
+		93C7F7E3194155C400D02AC9 /* Picnote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picnote.h; sourceTree = "<group>"; };
+		93C7F7E4194155C400D02AC9 /* Picnote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picnote.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				93C7F7B819414A0400D02AC9 /* AppDelegate.m */,
 				93C7F7BD19414A0400D02AC9 /* Images.xcassets */,
 				93C7F7BA19414A0400D02AC9 /* SeeNote.xcdatamodeld */,
+				93C7F7E3194155C400D02AC9 /* Picnote.h */,
+				93C7F7E4194155C400D02AC9 /* Picnote.m */,
 				93C7F7AF19414A0400D02AC9 /* Supporting Files */,
 			);
 			path = SeeNote;
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */,
 				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
