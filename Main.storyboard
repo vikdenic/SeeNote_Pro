@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="29n-Xb-eV4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="29n-Xb-eV4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -56,8 +56,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PnM-E9-QUr">
                                 <rect key="frame" x="0.0" y="58" width="320" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.307249147" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.307249147" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0012176736864547503" green="0.78519610969387754" blue="0.14897949914901371" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -266,6 +265,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onSaveButtonTapped:" destination="rEW-yu-DaN" eventType="touchUpInside" id="YKb-zb-863"/>
                                     <segue destination="Sjs-aT-RUR" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="6Xp-1J-Xd2"/>
                                 </connections>
                             </button>
@@ -292,6 +292,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="M7P-Y3-zRi" id="kDa-ji-UK2"/>
+                        <outlet property="textView" destination="IGU-e1-lTc" id="wQt-8B-hke"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emN-x6-Dzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Sjs-aT-RUR" userLabel="Exit" sceneMemberID="exit"/>

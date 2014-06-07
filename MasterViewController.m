@@ -21,7 +21,6 @@
 @property (nonatomic, weak)IBOutlet UIButton *floatingButton;
 
 @property (nonatomic, strong) UIImagePickerController *cameraController;
-//@property (nonatomic, strong) SaveViewController *saveViewController;
 
 @end
 
@@ -30,27 +29,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.fetchedResultsController.delegate = self;
+}
 
+-(void)load
+{
+
+        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
+
+        NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"photo" ascending:YES];
+        request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
+
+
+        self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
+
+
+//        [self.managedObjectContext save:nil];
+        [self.fetchedResultsController performFetch:nil];
+        [self.managedObjectContextMaster save:nil];
+        [self.tableView reloadData];
+    }
+
+-(void)viewWillAppear:(BOOL)animated
+{
     self.cameraController = [[UIImagePickerController alloc] init];
     self.cameraController.delegate = self;
     self.cameraController.allowsEditing = YES;
 
     self.cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    self.saveViewController = [[SaveViewController alloc]init];
 
     self.imageTaken = [[UIImage alloc]init];
 
-    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-
-    self.fetchedResultsController.delegate = self;
-    [self.fetchedResultsController performFetch:nil];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
     [self load];
-    [self.tableView reloadData];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -69,18 +79,12 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.imageTaken = [info objectForKey:UIImagePickerControllerEditedImage];
-
-
     [picker dismissViewControllerAnimated:NO completion:^{
     // Segues to SaveViewController after user picks photo
+        self.imageTaken = [info valueForKey:UIImagePickerControllerOriginalImage];
+//        NSLog(@"%@", self.imageTaken);
     [self performSegueWithIdentifier:@"SaveSegue" sender:self];
     }];
-}
-
--(void)load
-{
-    //here we can set up however we want to return the results, for the time being I moved the requests to the segmented control method. We should probably have it sort by whichever segment in selected from the start.
 }
 
 #pragma mark - Table View
@@ -88,6 +92,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.fetchedResultsController.sections[section] numberOfObjects];
+//    return 20;
 
 }
 
@@ -96,9 +101,10 @@
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    cell.categoryLabel.text = [NSString stringWithFormat:@"%@",[picNote valueForKey:@"category"]];
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [picNote valueForKey:@"date"]];
+//    cell.categoryLabel.text = [NSString stringWithFormat:@"%@",[picNote valueForKey:@"category"]];
+//    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [picNote valueForKey:@"date"]];
     cell.cellImageView.image = [UIImage imageWithData:picNote.photo];
+    cell.dateLabel.text = @"Blake";
 
     return cell;
 }
@@ -135,7 +141,7 @@
     {
         MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
 
-        mapAllPicNotesViewController.managedObjectContext = self.managedObjectContext;
+        mapAllPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
 
     } else if([segue.identifier isEqual: @"SaveSegue"])
     {
@@ -143,21 +149,32 @@
 
         saveViewController.imageTaken = self.imageTaken;
 
-        saveViewController.managedObjectContext = self.managedObjectContext;
+        saveViewController.managedObjectContextSave = self.managedObjectContextMaster;
 
     } else if([segue.identifier isEqual: @"IndividualSegue"])
     {
         IndividualPicNoteViewController *individualPicNoteViewController = segue.destinationViewController;
 
-        individualPicNoteViewController.managedObjectContext = self.managedObjectContext;
+        individualPicNoteViewController.managedObjectContext = self.managedObjectContextMaster;
     }
+}
+
+//throwin it in
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark- Unwind Segue
 
 - (IBAction)unwindSegueToMasterViewController:(UIStoryboardSegue *)sender
 {
-    [self.tableView reloadData];
+
+    SaveViewController *saveVC = sender.sourceViewController;
+    self.managedObjectContextMaster = saveVC.managedObjectContextSave;
+    [self load];
+
+    NSLog(@"MASTERVIEW MANOBJ COUNT IS %d",self.managedObjectContextMaster.registeredObjects.count);
 }
 
 @end

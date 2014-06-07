@@ -11,6 +11,9 @@
 
 @interface SaveViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end
 
 @implementation SaveViewController
@@ -19,12 +22,17 @@
 {
     [super viewDidLoad];
 
-    // HERE
-    //make a ImageView outlet and set uncomment the code below;
+    self.imageView.image = [[UIImage alloc]init];
+    self.imageView.image = self.imageTaken;
+//    self.imageView.image = [UIImage imageNamed:@"bob.jpg"];
 
-    //self.imageView.image = self.imageTaken.image;
+    NSLog(@"%@",self.imageTaken);
 
     //set text field to uneditable then editable when the edit button is pressed
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 
@@ -34,12 +42,15 @@
 {
     //here we need to save both the picture and the text to that instance of an entity object and hook the action up
 
-    Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContext];
+    Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContextSave];
 
     NSData *data = UIImagePNGRepresentation(self.imageTaken);
     picnote.photo = data;
-//    picnote.comment = whatever the textview strings is
-    [self.managedObjectContext save:nil];
+    picnote.comment = self.textView.text;
+    
+    [self.managedObjectContextSave save:nil];
+    NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);
+    NSLog(@"%@",picnote.photo);
 }
 
 @end
