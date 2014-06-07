@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SaveViewController : UIViewController
+@interface SaveViewController : UIViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) UIImage *imageTaken;
+
 
 @end

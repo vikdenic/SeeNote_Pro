@@ -16,4 +16,7 @@
 // Manages a collection of managed objects.
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, strong) UIImage *imageTaken;
+
+
 @end

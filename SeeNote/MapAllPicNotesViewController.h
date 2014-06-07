@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapAllPicNotesViewController : UIViewController
+@interface MapAllPicNotesViewController : UIViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
