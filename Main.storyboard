@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="29n-Xb-eV4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="29n-Xb-eV4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -50,11 +50,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Yc5-VP-SaL">
-                                <rect key="frame" x="0.0" y="192" width="320" height="301"/>
+                                <rect key="frame" x="0.0" y="229" width="320" height="301"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PnM-E9-QUr">
-                                <rect key="frame" x="0.0" y="52" width="320" height="132"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.307249147" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.307249147" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,7 +62,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gOa-1b-OTd">
-                                <rect key="frame" x="137" y="497" width="46" height="30"/>
+                                <rect key="frame" x="137" y="538" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,6 +99,16 @@
                                     <segue destination="HFJ-42-Dj8" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="1KM-iI-kar"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3QS-d7-JNW">
+                                <rect key="frame" x="145" y="198" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s4I-h9-jIC" kind="modal" identifier="MapSegue" id="f1d-Qo-Rpz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -110,6 +120,20 @@
                 <exit id="HFJ-42-Dj8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1485" y="-732"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iSV-xy-hjg">
+            <objects>
+                <viewController id="s4I-h9-jIC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="db7-Xv-Ah4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vgp-bE-vEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="-762"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="tB6-ln-AiT">
@@ -153,7 +177,7 @@
                                             <outlet property="categoryLabel" destination="d4S-JL-uJS" id="y05-BV-azL"/>
                                             <outlet property="cellImageView" destination="FJX-7r-OY7" id="wEt-d6-Ne4"/>
                                             <outlet property="dateLabel" destination="qVg-3e-wvs" id="Ufw-tL-qcs"/>
-                                            <segue destination="QmS-hB-Mem" kind="modal" id="b86-fl-Ju6"/>
+                                            <segue destination="QmS-hB-Mem" kind="modal" identifier="IndividualSegue" id="b86-fl-Ju6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -180,7 +204,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OsF-ZB-uVc" kind="modal" id="Mhc-u4-Fid"/>
+                                    <segue destination="OsF-ZB-uVc" kind="modal" identifier="AllMapSegue" id="Mhc-u4-Fid"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="klU-p0-k1p">
@@ -192,7 +216,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lGD-BQ-iiV" kind="modal" id="Me0-he-tgC"/>
+                                    <action selector="buttonTapped:" destination="29n-Xb-eV4" eventType="touchUpInside" id="m0h-vD-63g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -203,90 +227,17 @@
                         <outlet property="floatingButton" destination="klU-p0-k1p" id="6kq-UI-efL"/>
                         <outlet property="segmentedControl" destination="stS-Lw-SyU" id="gBN-Xb-Pt1"/>
                         <outlet property="tableView" destination="WJb-MI-1ip" id="D4V-xs-Ddk"/>
+                        <segue destination="rEW-yu-DaN" kind="modal" identifier="SaveSegue" modalTransitionStyle="crossDissolve" animates="NO" id="au1-nk-HPL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WT7-64-qxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="502" y="15"/>
         </scene>
-        <!--Picture Taking View Controller-->
-        <scene sceneID="5uz-y0-vW3">
-            <objects>
-                <viewController id="lGD-BQ-iiV" customClass="PictureTakingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="i51-ys-gaM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="EK0-sR-iet">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ebH-fC-Tue">
-                                <rect key="frame" x="20" y="20" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="&lt;Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="i8E-Tx-0Ej" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="cJf-FB-Zyb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VOq-4a-16v">
-                                <rect key="frame" x="122" y="518" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take Photo">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTakePhotoButtonPressed:" destination="lGD-BQ-iiV" eventType="touchUpInside" id="zC0-xr-MgU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0yO-4k-nRd">
-                                <rect key="frame" x="44" y="518" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSavedToCameraRoll:" destination="lGD-BQ-iiV" eventType="touchUpInside" id="HrD-n9-sZ5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QrY-hW-3Ay">
-                                <rect key="frame" x="261" y="518" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="rEW-yu-DaN" kind="modal" id="FgB-Z8-8St"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="07R-BM-i67">
-                                <rect key="frame" x="209" y="485" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Library">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectPhotoFromLibrary:" destination="lGD-BQ-iiV" eventType="touchUpInside" id="aOc-WE-wdB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="EK0-sR-iet" id="UkO-fj-nO8"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mLI-LI-41E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="i8E-Tx-0Ej" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1119" y="15"/>
-        </scene>
         <!--Save View Controller-->
         <scene sceneID="fLZ-bb-FMK">
             <objects>
-                <viewController id="rEW-yu-DaN" customClass="SaveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SaveViewController" id="rEW-yu-DaN" customClass="SaveViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="flJ-hN-vBB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

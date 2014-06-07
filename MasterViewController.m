@@ -9,14 +9,20 @@
 #import "MasterViewController.h"
 #import "CustomTableViewCell.h"
 #import "Picnote.h"
+#import "SaveViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic)IBOutlet UITableView *tableView;
 @property (weak, nonatomic)IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, weak)IBOutlet UIView *floatingView;
 @property (nonatomic, weak)IBOutlet UIButton *floatingButton;
 @property NSArray *resultsArray;
+
+@property (nonatomic, strong) UIImagePickerController *cameraController;
+@property (nonatomic, strong) SaveViewController *saveViewController;
+
+@property (nonatomic, strong) UIImage *imageTaken;
 
 @end
 
@@ -25,11 +31,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // Set delegate AFTER instantiation of object reference
+    self.cameraController = [[UIImagePickerController alloc] init];
+    self.cameraController.delegate = self;
+
+    self.cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.saveViewController = [[SaveViewController alloc]init];
+
+    self.imageTaken = [[UIImage alloc]init];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self load];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (IBAction)buttonTapped:(id)sender {
+
+    [self presentViewController:self.cameraController animated:NO completion:^{
+    }];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    // Segues to SaveViewController after user picks photo
+    [picker dismissViewControllerAnimated:NO completion:^{
+        [self performSegueWithIdentifier:@"SaveSegue" sender:self];
+    }];
+
+//    // Attempting to capture image
+//    self.imageTaken = [info objectForKey:UIImagePickerControllerOriginalImage];
 }
 
 -(void)load
@@ -80,6 +118,16 @@
 //        request.sortDescriptors = [NSArray arrayWithObject:sortDescriptorByDate];
     }
     [self.tableView reloadData];
+}
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqual: @"SaveSegue"])
+    {
+
+    }
 }
 
 #pragma mark- Unwind Segue

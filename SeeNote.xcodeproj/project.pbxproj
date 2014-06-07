@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60765E4619414E8000C75C13 /* PictureTakingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4519414E8000C75C13 /* PictureTakingViewController.m */; };
 		60765E49194158F700C75C13 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E48194158F700C75C13 /* SaveViewController.m */; };
 		60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */; };
 		60765E4E194178D100C75C13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60765E4D194178D100C75C13 /* MapKit.framework */; };
@@ -44,8 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		60765E4419414E8000C75C13 /* PictureTakingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureTakingViewController.h; path = ../PictureTakingViewController.h; sourceTree = "<group>"; };
-		60765E4519414E8000C75C13 /* PictureTakingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureTakingViewController.m; path = ../PictureTakingViewController.m; sourceTree = "<group>"; };
 		60765E47194158F700C75C13 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
 		60765E48194158F700C75C13 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
 		60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAllPicNotesViewController.h; sourceTree = "<group>"; };
@@ -146,8 +143,6 @@
 			children = (
 				93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */,
 				93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */,
-				60765E4419414E8000C75C13 /* PictureTakingViewController.h */,
-				60765E4519414E8000C75C13 /* PictureTakingViewController.m */,
 				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
 				60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */,
 				60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */,
@@ -295,7 +290,6 @@
 			files = (
 				93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */,
 				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
-				60765E4619414E8000C75C13 /* PictureTakingViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
 				60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,

@@ -17,4 +17,10 @@
 @property (nonatomic, retain) NSString * category;
 @property (nonatomic, retain) NSDate * date;
 
+// Stores location doubles (vik)
+// Can be retreived via CLLocationCoordinate2DMake (vik)
+@property double * latitude;
+@property double * longitude;
+
+
 @end

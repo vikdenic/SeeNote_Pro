@@ -15,5 +15,7 @@
 @dynamic comment;
 @dynamic category;
 @dynamic date;
+@dynamic longitude;
+@dynamic latitude;
 
 @end
