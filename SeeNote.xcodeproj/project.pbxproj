@@ -12,6 +12,7 @@
 		60765E4E194178D100C75C13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60765E4D194178D100C75C13 /* MapKit.framework */; };
 		60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */; };
 		93304EFD1942C55300182741 /* bob.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93304EFC1942C55300182741 /* bob.jpg */; };
+		93840D071943BE8800C62B44 /* MapIndividualPicNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */; };
 		93C7F7A719414A0400D02AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A619414A0400D02AC9 /* Foundation.framework */; };
 		93C7F7A919414A0400D02AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */; };
 		93C7F7AB19414A0400D02AC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7AA19414A0400D02AC9 /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 		60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualPicNoteViewController.h; sourceTree = "<group>"; };
 		60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualPicNoteViewController.m; sourceTree = "<group>"; };
 		93304EFC1942C55300182741 /* bob.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bob.jpg; sourceTree = "<group>"; };
+		93840D051943BE8800C62B44 /* MapIndividualPicNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapIndividualPicNotesController.h; sourceTree = "<group>"; };
+		93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapIndividualPicNotesController.m; sourceTree = "<group>"; };
 		93C7F7A319414A0400D02AC9 /* SeeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7F7A619414A0400D02AC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,12 +150,14 @@
 				93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */,
 				93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */,
 				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
+				93840D051943BE8800C62B44 /* MapIndividualPicNotesController.h */,
+				93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */,
 				60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */,
 				60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */,
-				60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */,
-				60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */,
 				60765E47194158F700C75C13 /* SaveViewController.h */,
 				60765E48194158F700C75C13 /* SaveViewController.m */,
+				60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */,
+				60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */,
 				93C7F7DD19414AE200D02AC9 /* MasterViewController.h */,
 				93C7F7DE19414AE200D02AC9 /* MasterViewController.m */,
 				93C7F7B719414A0400D02AC9 /* AppDelegate.h */,
@@ -292,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93840D071943BE8800C62B44 /* MapIndividualPicNotesController.m in Sources */,
 				93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */,
 				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,

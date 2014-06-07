@@ -125,15 +125,24 @@
             </objects>
             <point key="canvasLocation" x="1485" y="-732"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Individual Pic Notes Controller-->
         <scene sceneID="iSV-xy-hjg">
             <objects>
-                <viewController id="s4I-h9-jIC" sceneMemberID="viewController">
+                <viewController id="s4I-h9-jIC" customClass="MapIndividualPicNotesController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="db7-Xv-Ah4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="xEd-dk-KRV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="xEd-dk-KRV" id="Fif-wu-qat"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgp-bE-vEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
