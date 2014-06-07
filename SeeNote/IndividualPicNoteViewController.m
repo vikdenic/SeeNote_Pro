@@ -11,6 +11,8 @@
 @interface IndividualPicNoteViewController ()
 
 @property (nonatomic, weak)IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -21,18 +23,32 @@
     [super viewDidLoad];
 
     self.deleteButton.alpha = 0;
+    self.saveButton.alpha = 0;
 
     //have the textView with disabled editing until the user clicks the editing button
+
+    self.editing = NO;
 }
 
 #pragma mark - Edit Button
 
 - (IBAction)onEditButtonTapped:(id)sender
 {
-    //here we should enable the textView for editing and then when the user clicks save, save the new text there.
 
-    self.deleteButton.alpha = 1;
-    //this makes the delete button viewable when the user is editing
+        //here we should enable the textView for editing and then when the user clicks save, save the new text there.
+
+        self.deleteButton.alpha = 1;
+        self.saveButton.alpha = 1;
+        self.editButton.alpha = 0;
+        //this makes the delete button viewable when the user is editing
+
+}
+- (IBAction)onSaveButtonTapped:(id)sender {
+
+    self.deleteButton.alpha = 0;
+    self.saveButton.alpha = 0;
+    self.editButton.alpha = 1;
+
 }
 
 - (IBAction)onDeleteButtonTapped:(id)sender
