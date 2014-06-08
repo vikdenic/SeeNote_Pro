@@ -82,7 +82,17 @@
     [picker dismissViewControllerAnimated:NO completion:^{
     // Segues to SaveViewController after user picks photo
         self.imageTaken = [info valueForKey:UIImagePickerControllerOriginalImage];
-//        NSLog(@"%@", self.imageTaken);
+
+ //       NSData *imageData = UIImagePNGRepresentation(image);
+
+
+
+        // Extracts and stores creation date of image as NSDate reference
+        NSDictionary *metaData = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
+        self.date = [[NSDate alloc]init];
+        self.date = [[metaData objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"];
+        NSLog(@"DATE IS %@",self.date);
+
     [self performSegueWithIdentifier:@"SaveSegue" sender:self];
     }];
 }
@@ -101,12 +111,16 @@
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-//    cell.categoryLabel.text = [NSString stringWithFormat:@"%@",[picNote valueForKey:@"category"]];
-//    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [picNote valueForKey:@"date"]];
     cell.cellImageView.image = [UIImage imageWithData:picNote.photo];
 
     cell.categoryLabel.text = picNote.category;
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
+
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM/dd/yy"];
+    NSString *formattedDate = [dateFormatter stringFromDate:picNote.date];
+    cell.dateLabel.text = formattedDate;
+
+//    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
 
     return cell;
 }
@@ -150,6 +164,8 @@
         SaveViewController *saveViewController = segue.destinationViewController;
 
         saveViewController.imageTaken = self.imageTaken;
+        saveViewController.date = self.date;
+        NSLog(@"SAVE DATE BFR SEG IS %@",saveViewController.date);
 
         saveViewController.managedObjectContextSave = self.managedObjectContextMaster;
 

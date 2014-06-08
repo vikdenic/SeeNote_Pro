@@ -23,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.date = [[NSDate alloc]init];
 
     self.imageView.image = [[UIImage alloc]init];
     self.imageView.image = self.imageTaken;
@@ -50,10 +51,12 @@
     picnote.photo = data;
     picnote.comment = self.commentTextView.text;
     picnote.category = self.tagTextField.text;
+    picnote.date = self.date;
+    NSLog(@"PASSED THRU DATE IS %@", picnote.date);
 
     [self.managedObjectContextSave save:nil];
-    NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);
-    NSLog(@"%@",picnote.photo);
+//    NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);
+//    NSLog(@"%@",picnote.photo);
 }
 
 @end

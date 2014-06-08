@@ -19,5 +19,7 @@
 
 @property (nonatomic, strong) UIImage *imageTaken;
 
+@property (strong, nonatomic) NSDate *date;
+
 
 @end

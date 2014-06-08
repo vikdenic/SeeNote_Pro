@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContextSave;
 
 @property (nonatomic, strong) UIImage *imageTaken;
+@property (nonatomic, strong) NSDate *date;
 
 
 @end
