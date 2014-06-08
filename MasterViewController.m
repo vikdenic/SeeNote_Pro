@@ -104,7 +104,9 @@
 //    cell.categoryLabel.text = [NSString stringWithFormat:@"%@",[picNote valueForKey:@"category"]];
 //    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [picNote valueForKey:@"date"]];
     cell.cellImageView.image = [UIImage imageWithData:picNote.photo];
-    cell.dateLabel.text = @"Blake";
+
+    cell.categoryLabel.text = picNote.category;
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
 
     return cell;
 }
@@ -175,6 +177,11 @@
     [self load];
 
     NSLog(@"MASTERVIEW MANOBJ COUNT IS %d",self.managedObjectContextMaster.registeredObjects.count);
+}
+
+- (IBAction)unwindSegueToMasterViewControllerOnCancel:(UIStoryboardSegue *)sender
+{
+
 }
 
 @end

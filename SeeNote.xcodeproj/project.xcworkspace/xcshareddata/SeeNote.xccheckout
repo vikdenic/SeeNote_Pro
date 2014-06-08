@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2DB89712-14FA-45BD-BA9B-46E246A75C57</string>
+	<string>35D7C3BF-01EA-4E70-A64E-927E7BCAC056</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SeeNote</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>87301883-FA0D-431D-973F-C36186895AC9</key>
-		<string>https://github.com/vikdenic/SeeNote.git</string>
+		<key>73E24ADA-BCC5-4697-9B59-CC7632DCEE20</key>
+		<string>https://github.com/vikdenic/see_note</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SeeNote.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>87301883-FA0D-431D-973F-C36186895AC9</key>
+		<key>73E24ADA-BCC5-4697-9B59-CC7632DCEE20</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/vikdenic/SeeNote.git</string>
+	<string>https://github.com/vikdenic/see_note</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>87301883-FA0D-431D-973F-C36186895AC9</string>
+	<string>73E24ADA-BCC5-4697-9B59-CC7632DCEE20</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>87301883-FA0D-431D-973F-C36186895AC9</string>
+			<string>73E24ADA-BCC5-4697-9B59-CC7632DCEE20</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SeeNote</string>
 		</dict>

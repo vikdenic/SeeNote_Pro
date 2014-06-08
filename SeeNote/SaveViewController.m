@@ -12,7 +12,9 @@
 @interface SaveViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 
 @end
 
@@ -46,8 +48,9 @@
 
     NSData *data = UIImagePNGRepresentation(self.imageTaken);
     picnote.photo = data;
-    picnote.comment = self.textView.text;
-    
+    picnote.comment = self.commentTextView.text;
+    picnote.category = self.tagTextField.text;
+
     [self.managedObjectContextSave save:nil];
     NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);
     NSLog(@"%@",picnote.photo);
