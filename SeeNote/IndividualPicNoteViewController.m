@@ -30,6 +30,10 @@
     self.editing = NO;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Edit Button
 
 - (IBAction)onEditButtonTapped:(id)sender
