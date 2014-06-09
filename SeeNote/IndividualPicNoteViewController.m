@@ -10,7 +10,7 @@
 
 @interface IndividualPicNoteViewController ()
 
-@property (nonatomic, weak)IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Picnote.h"
 
 @interface MasterViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UIImage *imageTaken;
 
 @property (strong, nonatomic) NSDate *date;
+
+@property Picnote *picnote;
 
 
 @end

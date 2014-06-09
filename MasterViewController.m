@@ -12,6 +12,7 @@
 #import "SaveViewController.h"
 #import "IndividualPicNoteViewController.h"
 #import "MapAllPicNotesViewController.h"
+#import "MapIndividualPicNotesController.h"
 
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -34,17 +35,11 @@
 
 -(void)load
 {
-
         NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
-
         NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"photo" ascending:YES];
         request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
-
-
         self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
 
-
-//        [self.managedObjectContext save:nil];
         [self.fetchedResultsController performFetch:nil];
         [self.managedObjectContextMaster save:nil];
         [self.tableView reloadData];
@@ -52,6 +47,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
+    [self.tableView reloadData];
+
     self.cameraController = [[UIImagePickerController alloc] init];
     self.cameraController.delegate = self;
     self.cameraController.allowsEditing = YES;
@@ -158,6 +156,7 @@
         MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
 
         mapAllPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
+        mapAllPicNotesViewController.fetchedResultsController = self.fetchedResultsController;
 
     } else if([segue.identifier isEqual: @"SaveSegue"])
     {
@@ -168,12 +167,26 @@
         NSLog(@"SAVE DATE BFR SEG IS %@",saveViewController.date);
 
         saveViewController.managedObjectContextSave = self.managedObjectContextMaster;
+        saveViewController.fetchedResultsController = self.fetchedResultsController;
 
     } else if([segue.identifier isEqual: @"IndividualSegue"])
     {
         IndividualPicNoteViewController *individualPicNoteViewController = segue.destinationViewController;
 
         individualPicNoteViewController.managedObjectContext = self.managedObjectContextMaster;
+        individualPicNoteViewController.fetchedResultsController = self.fetchedResultsController;
+
+
+    } else if([segue.identifier isEqual: @"MapSegue"])
+    {
+        MapIndividualPicNotesController *mapIndividualPicNotesViewController = segue.destinationViewController;
+
+        mapIndividualPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
+        mapIndividualPicNotesViewController.fetchedResultsController = self.fetchedResultsController;
+
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        Picnote *pictnote = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        mapIndividualPicNotesViewController.picnote = pictnote;
     }
 }
 

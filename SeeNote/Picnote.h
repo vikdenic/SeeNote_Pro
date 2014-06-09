@@ -19,8 +19,8 @@
 
 // Stores location doubles (vik)
 // Can be retreived via CLLocationCoordinate2DMake (vik)
-@property double * latitude;
-@property double * longitude;
+@property double latitude;
+@property double longitude;
 
 
 @end
