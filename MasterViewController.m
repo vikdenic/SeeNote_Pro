@@ -81,15 +81,12 @@
     // Segues to SaveViewController after user picks photo
         self.imageTaken = [info valueForKey:UIImagePickerControllerOriginalImage];
 
- //       NSData *imageData = UIImagePNGRepresentation(image);
-
-
+//       NSData *imageData = UIImagePNGRepresentation(image);
 
         // Extracts and stores creation date of image as NSDate reference
         NSDictionary *metaData = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
         self.date = [[NSDate alloc]init];
         self.date = [[metaData objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"];
-        NSLog(@"DATE IS %@",self.date);
 
     [self performSegueWithIdentifier:@"SaveSegue" sender:self];
     }];
@@ -108,11 +105,12 @@
 {
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
     
+    // Obtaining image via path
     NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
     UIImage *image = [UIImage imageWithData:pngData];
     cell.cellImageView.image = image;
+//    NSLog(@"%@",image);
 
     cell.categoryLabel.text = picNote.category;
 
@@ -122,7 +120,6 @@
     cell.dateLabel.text = formattedDate;
 
 //    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
-
     return cell;
 }
 
@@ -167,7 +164,6 @@
 
         saveViewController.imageTaken = self.imageTaken;
         saveViewController.date = self.date;
-        NSLog(@"SAVE DATE BFR SEG IS %@",saveViewController.date);
 
         saveViewController.managedObjectContextSave = self.managedObjectContextMaster;
         saveViewController.fetchedResultsController = self.fetchedResultsController;
@@ -207,8 +203,7 @@
     SaveViewController *saveVC = sender.sourceViewController;
     self.managedObjectContextMaster = saveVC.managedObjectContextSave;
     [self load];
-
-    NSLog(@"MASTERVIEW MANOBJ COUNT IS %d",self.managedObjectContextMaster.registeredObjects.count);
+//    NSLog(@"%@",self.managedObjectContextMaster);
 }
 
 - (IBAction)unwindSegueToMasterViewControllerOnCancel:(UIStoryboardSegue *)sender
