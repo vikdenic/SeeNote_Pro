@@ -7,12 +7,15 @@
 //
 
 #import "IndividualPicNoteViewController.h"
+#import "Picnote.h"
 
 @interface IndividualPicNoteViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
+@property Picnote *picNote;
 
 @end
 
@@ -26,9 +29,15 @@
     self.saveButton.alpha = 0;
 
     //have the textView with disabled editing until the user clicks the editing button
-
     self.editing = NO;
+
+
+    //make a segue that goes here and gets the selected Index Path and then finds the object from that and just passes the object then populate everything with that object
+
+
+
 }
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

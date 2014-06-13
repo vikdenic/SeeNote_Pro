@@ -26,7 +26,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sbD-QJ-4Hd" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="aWt-ST-Fkq"/>
+                                    <segue destination="sbD-QJ-4Hd" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="Cg1-bc-wb9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,12 +34,47 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="LM8-EN-F0j" id="Nkh-rh-0nj"/>
+                        <segue destination="daJ-ZB-ch7" kind="modal" identifier="ToDetailedViewOfPinAnnotation" id="o2f-nH-y2m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzU-hh-4pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sbD-QJ-4Hd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="956" y="-1041"/>
+            <point key="canvasLocation" x="848" y="-1332"/>
+        </scene>
+        <!--Detailed Map All Pics Notes View Controller-->
+        <scene sceneID="Xiz-my-5fb">
+            <objects>
+                <viewController id="daJ-ZB-ch7" customClass="DetailedMapAllPicsNotesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="msc-9h-Fve">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Eed-6u-rw6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfH-ZR-hHU">
+                                <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="F5C-n0-A2r" kind="unwind" unwindAction="unwindSegueToMapAllViewController:" id="RXN-6C-OwX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Eed-6u-rw6" id="45n-69-VpG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wiX-Yo-VTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F5C-n0-A2r" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1313" y="-1475"/>
         </scene>
         <!--Individual Pic Note View Controller-->
         <scene sceneID="hmU-JW-jUo">
@@ -147,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgp-bE-vEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1859" y="-762"/>
+            <point key="canvasLocation" x="1875" y="-732"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="tB6-ln-AiT">

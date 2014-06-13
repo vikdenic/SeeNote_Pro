@@ -9,6 +9,7 @@
 #import "MapAllPicNotesViewController.h"
 #import <MapKit/MapKit.h>
 #import "Picnote.h"
+#import "DetailedMapAllPicsNotesViewController.h"
 
 @interface MapAllPicNotesViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -17,6 +18,9 @@
 
 @property NSArray *mapItems;
 
+@property int number;
+
+
 @end
 
 @implementation MapAllPicNotesViewController
@@ -24,6 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.number = 0;
 
     self.mapItems = [NSArray array];
 
@@ -34,28 +46,19 @@
     [self.locationManager startUpdatingLocation];
 
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
-//    self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.mapItems = [self.managedObjectContext executeFetchRequest:request error:nil];
-    [self.managedObjectContext save:nil];
-
-    NSLog(@"%lu", (unsigned long)self.mapItems.count);
-
 
     for (Picnote *picnote in self.mapItems)
     {
-
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
         annotation.coordinate = CLLocationCoordinate2DMake(picnote.latitude, picnote.longitude);
         annotation.title = [NSString stringWithFormat:@"%@", picnote.date];
         annotation.subtitle = picnote.category;
 
-        NSLog(@"%f %f", picnote.latitude, picnote.longitude);
+        self.thePicNote = [UIImage imageWithData:picnote.photo];
 
         [self.mapView addAnnotation:annotation];
-    }
-
-
-
+}
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -67,38 +70,69 @@
 {
     [self.locationManager stopUpdatingLocation];
     [self.mapView setShowsUserLocation:YES];
-
-//    self.mapView.userLocation.coordinate.latitude
-//    self.mapView.userLocation.coordinate.longitude
-
-    //need to get these in the saveViewController when the picture is saved- so in the background, save their location. will need to put all the code from above to maek it work.
-
-
-
-    //we now have the location
-    //we can store the latitude and longitude here....
 }
-
-//need to pass the MOC and then fetch request the user and put their lat and long into the annotation, will need to get each instance of picnote and fast enumerate through it to populate the map.
 
 #pragma mark - Map 
 
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-//{
-//    for (Picnote *picnote in self.mapItems)
-//    {
-//    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:nil];
-//    pin.canShowCallout = YES;
-//    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//    pin.image = [UIImage imageWithData:picnote.photo];
-//
-//    return pin;
-//
-//    }
-//
-//    return nil;
-//    //can i do two separate for loops or somehow put them in one?
-//}
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    static NSString *identifier = @"MyLocation";
+
+    MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+
+    self.number++;
+
+    NSLog(@"%i",self.number);
+
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+
+
+                 Picnote *picnote = [self.mapItems objectAtIndex:self.number];
+
+                 UIImage *tempImage = [UIImage imageWithData:picnote.photo];
+
+                 CGSize sacleSize = CGSizeMake(50, 50);
+                 UIGraphicsBeginImageContextWithOptions(sacleSize, NO, 0.0);
+                 [tempImage drawInRect:CGRectMake(0, 0, sacleSize.width, sacleSize.height)];
+                 UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+                 UIGraphicsEndImageContext();
+
+                 annotationView.image = resizedImage;
+
+        return annotationView;
+}
+
+
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"ToDetailedViewOfPinAnnotation" sender:view];
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    //a way to tell the index path????
+}
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ToDetailedViewOfPinAnnotation"])
+    {
+        //pass the correct data here and populate the image view
+
+        DetailedMapAllPicsNotesViewController *DMAPNVC = segue.destinationViewController;
+        DMAPNVC.thePicNote = self.thePicNote;
+    }
+}
+
+- (IBAction)unwindSegueToMapAllViewController:(UIStoryboardSegue *)sender
+{
+    
+}
 
 
 @end
