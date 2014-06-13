@@ -75,7 +75,7 @@
 
     // Need to assign filePath a unique fileName everytime
 
-    NSString *uniqueFileName = [NSString stringWithFormat:@"image-%ul.png", (NSUInteger)([[NSDate date] timeIntervalSince1970]*10.0)];
+    NSString *uniqueFileName = [NSString stringWithFormat:@"image-%ul.png", (NSUInteger)([[NSDate date] timeIntervalSince1970])];
 
     NSLog(@"%@",uniqueFileName);
 
