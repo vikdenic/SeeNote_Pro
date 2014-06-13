@@ -36,7 +36,7 @@
 -(void)load
 {
         NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
-        NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"photo" ascending:YES];
+        NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"path" ascending:YES];
         request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
         self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
 
@@ -109,7 +109,10 @@
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    cell.cellImageView.image = [UIImage imageWithData:picNote.photo];
+    
+    NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
+    UIImage *image = [UIImage imageWithData:pngData];
+    cell.cellImageView.image = image;
 
     cell.categoryLabel.text = picNote.category;
 

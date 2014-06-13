@@ -11,7 +11,7 @@
 
 @implementation Picnote
 
-@dynamic photo;
+@dynamic path;
 @dynamic comment;
 @dynamic category;
 @dynamic date;

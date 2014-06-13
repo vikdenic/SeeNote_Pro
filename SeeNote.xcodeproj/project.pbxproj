@@ -245,7 +245,7 @@
 				ORGANIZATIONNAME = "Vik and Blake";
 				TargetAttributes = {
 					93C7F7A219414A0400D02AC9 = {
-						DevelopmentTeam = ZNAFR9K9ZC;
+						DevelopmentTeam = 3DJPBY6593;
 					};
 					93C7F7C219414A0400D02AC9 = {
 						TestTargetID = 93C7F7A219414A0400D02AC9;

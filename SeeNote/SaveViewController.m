@@ -60,14 +60,26 @@
 
     Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContextSave];
 
-    NSData *data = UIImagePNGRepresentation(self.imageTaken);
-    picnote.photo = data;
+    CGSize scaleSize = CGSizeMake(150, 150);
+    UIGraphicsBeginImageContextWithOptions(scaleSize, NO, 0.0);
+    [self.imageTaken drawInRect:CGRectMake(0, 0, scaleSize.width, scaleSize.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+
+    NSData *pngData = UIImagePNGRepresentation(resizedImage);
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"image.png"]; //Add the file name
+    [pngData writeToFile:filePath atomically:YES]; //Write the file
+
+    picnote.path = filePath;
     picnote.comment = self.commentTextView.text;
     picnote.category = self.tagTextField.text;
     picnote.date = self.date;
     picnote.latitude = self.latitude;
     picnote.longitude = self.longitude;
-
 
     NSLog(@"PASSED THRU DATE IS %@", picnote.date);
 
