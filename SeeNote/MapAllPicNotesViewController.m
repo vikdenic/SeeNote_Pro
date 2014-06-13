@@ -55,10 +55,12 @@
         annotation.title = [NSString stringWithFormat:@"%@", picnote.date];
         annotation.subtitle = picnote.category;
 
-        self.thePicNote = [UIImage imageWithData:picnote.photo];
+        NSString *path = picnote.path;
+
+//        self.thePicNote = [UIImage imageWithData:picnote.photo];
 
         [self.mapView addAnnotation:annotation];
-}
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -80,26 +82,26 @@
 
     MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
 
-    self.number++;
+//    self.number++;
 
-    NSLog(@"%i",self.number);
-
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
-
-
-                 Picnote *picnote = [self.mapItems objectAtIndex:self.number];
-
-                 UIImage *tempImage = [UIImage imageWithData:picnote.photo];
-
-                 CGSize sacleSize = CGSizeMake(50, 50);
-                 UIGraphicsBeginImageContextWithOptions(sacleSize, NO, 0.0);
-                 [tempImage drawInRect:CGRectMake(0, 0, sacleSize.width, sacleSize.height)];
-                 UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-                 UIGraphicsEndImageContext();
-
-                 annotationView.image = resizedImage;
+//    NSLog(@"%i",self.number);
+//
+//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+//        annotationView.enabled = YES;
+//        annotationView.canShowCallout = YES;
+//
+//
+//                 Picnote *picnote = [self.mapItems objectAtIndex:self.number];
+//
+//                 UIImage *tempImage = [UIImage imageWithData:picnote.photo];
+//
+//                 CGSize sacleSize = CGSizeMake(50, 50);
+//                 UIGraphicsBeginImageContextWithOptions(sacleSize, NO, 0.0);
+//                 [tempImage drawInRect:CGRectMake(0, 0, sacleSize.width, sacleSize.height)];
+//                 UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+//                 UIGraphicsEndImageContext();
+//
+//                 annotationView.image = resizedImage;
 
         return annotationView;
 }

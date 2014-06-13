@@ -21,6 +21,7 @@
 @property double latitude;
 @property double longitude;
 
+@property int num;
 
 @end
 
@@ -42,7 +43,7 @@
     self.imageView.image = self.imageTaken;
 //    self.imageView.image = [UIImage imageNamed:@"bob.jpg"];
 
-    NSLog(@"%@",self.imageTaken);
+//    NSLog(@"%@",self.imageTaken);
 
     //set text field to uneditable then editable when the edit button is pressed
     //test
@@ -57,19 +58,36 @@
 - (IBAction)onSaveButtonTapped:(id)sender
 {
     //here we need to save both the picture and the text to that instance of an entity object and hook the action up
-
     Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContextSave];
 
-    NSData *data = UIImagePNGRepresentation(self.imageTaken);
-    picnote.photo = data;
+    // Compressing and converting user's image
+
+    CGSize scaleSize = CGSizeMake(150, 150);
+    UIGraphicsBeginImageContextWithOptions(scaleSize, NO, 0.0);
+    [self.imageTaken drawInRect:CGRectMake(0, 0, scaleSize.width, scaleSize.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    NSData *pngData = UIImagePNGRepresentation(resizedImage);
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+
+    // Need to assign filePath a unique fileName everytime
+
+    NSString *uniqueFileName = [NSString stringWithFormat:@"image-%ul.png", (NSUInteger)([[NSDate date] timeIntervalSince1970]*10.0)];
+
+    NSLog(@"%@",uniqueFileName);
+
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:uniqueFileName]; //Add the file name
+    [pngData writeToFile:filePath atomically:YES]; //Write the file
+
+    picnote.path = filePath;
     picnote.comment = self.commentTextView.text;
     picnote.category = self.tagTextField.text;
     picnote.date = self.date;
     picnote.latitude = self.latitude;
     picnote.longitude = self.longitude;
-
-
-    NSLog(@"PASSED THRU DATE IS %@", picnote.date);
 
     [self.managedObjectContextSave save:nil];
 //    NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);

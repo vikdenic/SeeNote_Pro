@@ -12,7 +12,7 @@
 
 @interface Picnote : NSManagedObject
 
-@property (nonatomic, retain) NSData * photo;
+@property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSString * category;
 @property (nonatomic, retain) NSDate * date;
