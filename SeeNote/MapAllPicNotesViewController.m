@@ -16,6 +16,7 @@
 
 @property (nonatomic, weak)IBOutlet MKMapView *mapView;
 @property CLLocationManager *locationManager;
+@property CLLocation *location;
 
 @property NSArray *mapItems;
 
@@ -67,6 +68,23 @@
 {
     [self.locationManager stopUpdatingLocation];
     [self.mapView setShowsUserLocation:YES];
+
+    self.location = [self.locationManager location];
+
+    [self performSelector:@selector(delayForZoom)
+               withObject:nil
+               afterDelay:1.0]; //will zoom in after 5 seconds
+
+}
+
+- (void)delayForZoom
+{
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = self.location.coordinate;
+    mapRegion.span.latitudeDelta = 0.25;
+    mapRegion.span.longitudeDelta = 0.25;
+
+    [self.mapView setRegion:mapRegion animated: YES];
 }
 
 #pragma mark - Map 

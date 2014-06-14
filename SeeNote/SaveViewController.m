@@ -114,4 +114,16 @@
     //we can store the latitude and longitude here....
 }
 
+#pragma mark - Text Field and Text View
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    self.commentTextView.text = nil;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.tagTextField.text = nil;
+}
+
 @end

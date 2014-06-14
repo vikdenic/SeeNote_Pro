@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 
+@property NSArray *thisArray;
+
 @end
 
 @implementation MasterViewController
@@ -41,13 +43,15 @@
         self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
 
         [self.fetchedResultsController performFetch:nil];
+
+    NSLog(@"%i", self.fetchedResultsController.fetchedObjects.count);
+
         [self.managedObjectContextMaster save:nil];
         [self.tableView reloadData];
     }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
     [self.tableView reloadData];
 
     self.cameraController = [[UIImagePickerController alloc] init];
@@ -96,25 +100,35 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.fetchedResultsController.sections[section] numberOfObjects];
+    return self.fetchedResultsController.fetchedObjects.count;
+
 }
+
+
+//for some reason, the section thing isn't working
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return self.fetchedResultsController.fetchedObjects.count;
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    self.tableView.sectionHeaderHeight = 22;
+
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    // Obtaining image via path
     NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
     UIImage *image = [UIImage imageWithData:pngData];
-
     cell.cellImageView.image = image;
     cell.cellImageView.backgroundColor = [UIColor orangeColor];
 
     cell.commentTextView.hidden = YES;
-
     cell.commentTextView.text = picNote.comment;
-    cell.cellImageView.tag = indexPath.row;
+    cell.cellImageView.tag = indexPath.section;
 
     CGRect frame = cell.commentTextView.frame;
     frame.size.height = cell.commentTextView.contentSize.height;
@@ -130,15 +144,6 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-
-
-
-
-
-
-
-
-
     cell.categoryLabel.text = picNote.category;
 
     NSDateFormatter *dateFormatter =[[NSDateFormatter alloc]init];
@@ -150,15 +155,41 @@
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
-    UIImage *image = [UIImage imageWithData:pngData];
-
-    return image.size.height;
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [myDataSource removeObjectAtIndex:indexPath.row];
+//        [myTable reloadData];
 }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Blake";
+}
+
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//
+//    NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
+//    UIImage *image = [UIImage imageWithData:pngData];
+//
+//    return image.size.height;
+//}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//
+//    Picnote *picNote = [self.thisArray objectAtIndex:section];
+//
+//    return [NSString stringWithFormat:@"Time Taken: %@", picNote.date];
+//}
 
 #pragma mark - Segmented Control
 
@@ -232,7 +263,7 @@
 {
     UIImageView *sender = (UIImageView *)tapGestureRecognizer.view;
 
-    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
+    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
 
     customTableViewCell.commentTextView.hidden = NO;
 

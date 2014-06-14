@@ -63,12 +63,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-E9-QUr">
-                                <rect key="frame" x="0.0" y="58" width="320" height="132"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.9450981021" green="0.9450981021" blue="0.9450981021" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" white="0.12143590329999999" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QmS-hB-Mem" id="YIZ-81-ohC"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOa-1b-OTd">
                                 <rect key="frame" x="262" y="20" width="46" height="30"/>
@@ -131,14 +134,27 @@
                                     <segue destination="HFJ-42-Dj8" kind="unwind" unwindAction="unwindSegueToMasterViewController:" id="F4h-Cy-oY8"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YkM-nR-bvJ">
+                                <rect key="frame" x="10" y="50" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.1329121492" green="0.1329121492" blue="0.1329121492" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QmS-hB-Mem" id="BaL-ul-wNN"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="commentTextView" destination="PnM-E9-QUr" id="VLW-N7-zYM"/>
                         <outlet property="deleteButton" destination="S8Z-qX-UbJ" id="obu-Xv-1ng"/>
                         <outlet property="editButton" destination="OE6-dP-Xle" id="Pva-ZF-A8B"/>
                         <outlet property="imageView" destination="Yc5-VP-SaL" id="ock-S4-7cF"/>
                         <outlet property="saveButton" destination="gOa-1b-OTd" id="VJc-gP-dfa"/>
+                        <outlet property="tagTextField" destination="YkM-nR-bvJ" id="fsn-Op-lbe"/>
                         <outlet property="theButton1" destination="qnL-OJ-pCg" id="TRY-aD-5Wt"/>
                         <outlet property="theButton2" destination="X64-rC-zoQ" id="eoh-Nr-PGo"/>
                     </connections>
@@ -360,6 +376,9 @@
                                 <color key="textColor" red="0.13291214923469385" green="0.13291214923469385" blue="0.13291214923469385" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rEW-yu-DaN" id="cWt-qc-Kxp"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Q2-lO-0dx">
                                 <rect key="frame" x="16" y="100" width="304" height="162"/>
@@ -368,6 +387,9 @@
                                 <color key="textColor" red="0.1329121492" green="0.1329121492" blue="0.1329121492" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rEW-yu-DaN" id="MWy-RH-r3B"/>
+                                </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tag_line" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-3E-VUA">
                                 <rect key="frame" x="19" y="99" width="304" height="1"/>

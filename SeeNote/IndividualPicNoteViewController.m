@@ -9,13 +9,16 @@
 #import "IndividualPicNoteViewController.h"
 #import "Picnote.h"
 
-@interface IndividualPicNoteViewController ()
+@interface IndividualPicNoteViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
-@property (nonatomic, weak)IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *theButton1;
 @property (weak, nonatomic) IBOutlet UIButton *theButton2;
@@ -29,6 +32,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.commentTextView.text = @"Write Description Here";
 
     if (self.theNumber ==1)
     {
@@ -51,10 +61,9 @@
     NSData *pngData = [NSData dataWithContentsOfFile:self.thePassedPicNote.path];
     UIImage *image = [UIImage imageWithData:pngData];
 
-    NSLog(@"Individual:%@", self.thePassedPicNote.date);
-
-
     self.imageView.image = image;
+    self.commentTextView.text = self.thePassedPicNote.comment;
+    self.tagTextField.text = self.thePassedPicNote.category;
 }
 
 
@@ -90,6 +99,18 @@
 }
 
 //leave save code here
+
+#pragma mark - Text Field and Text View
+
+//-(void)textViewDidBeginEditing:(UITextView *)textView
+//{
+//    self.commentTextView.text = nil;
+//}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.tagTextField.text = nil;
+}
 
 
 @end
