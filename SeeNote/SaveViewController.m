@@ -67,8 +67,6 @@
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
-    NSLog(@"resized image:height:%f width:%f", resizedImage.size.height, resizedImage.size.width);
-
     NSData *pngData = UIImagePNGRepresentation(resizedImage);
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

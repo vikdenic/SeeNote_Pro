@@ -15,7 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
-@property Picnote *picNote;
+@property (nonatomic, weak)IBOutlet UIImageView *imageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *theButton1;
+@property (weak, nonatomic) IBOutlet UIButton *theButton2;
+
+
 
 @end
 
@@ -25,6 +30,17 @@
 {
     [super viewDidLoad];
 
+    if (self.theNumber ==1)
+    {
+        self.theButton1.hidden = NO;
+        self.theButton2.hidden = YES;
+    } else {
+
+        self.theButton1.hidden = YES;
+        self.theButton2.hidden = NO;
+    }
+
+
     self.deleteButton.alpha = 0;
     self.saveButton.alpha = 0;
 
@@ -32,14 +48,18 @@
     self.editing = NO;
 
 
-    //make a segue that goes here and gets the selected Index Path and then finds the object from that and just passes the object then populate everything with that object
+    NSData *pngData = [NSData dataWithContentsOfFile:self.thePassedPicNote.path];
+    UIImage *image = [UIImage imageWithData:pngData];
+
+    NSLog(@"Individual:%@", self.thePassedPicNote.date);
 
 
-
+    self.imageView.image = image;
 }
 
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [self.view endEditing:YES];
 }
 

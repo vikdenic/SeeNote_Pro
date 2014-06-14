@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Picnote.h"
 
 @interface IndividualPicNoteViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property Picnote *thePassedPicNote;
+@property int theNumber;
+
 
 @end

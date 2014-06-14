@@ -9,8 +9,8 @@
 #import "MapAllPicNotesViewController.h"
 #import <MapKit/MapKit.h>
 #import "Picnote.h"
-#import "DetailedMapAllPicsNotesViewController.h"
 #import "PicNoteAnnotation.h"
+#import "IndividualPicNoteViewController.h"
 
 @interface MapAllPicNotesViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -19,9 +19,6 @@
 
 @property NSArray *mapItems;
 
-@property int number;
-
-
 @end
 
 @implementation MapAllPicNotesViewController
@@ -29,14 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    self.number = 0;
+    self.theNumber = 1;
+
 
     self.mapItems = [NSArray array];
 
@@ -98,31 +95,48 @@
     annotationView.layer.borderWidth = 2.0;
     annotationView.clipsToBounds = YES;
 
+    //double tap to like
+    if (annotationView.gestureRecognizers.count == 0)
+    {
+        UITapGestureRecognizer *tapping = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapTap:)];
+        tapping.numberOfTapsRequired = 2;
+        [annotationView addGestureRecognizer:tapping];
+        annotationView.userInteractionEnabled = YES;
+    }
+
     return annotationView;
-}
-
-
-
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    [self performSegueWithIdentifier:@"ToDetailedViewOfPinAnnotation" sender:view];
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    //a way to tell the index path????
+    for (Picnote *picNote in self.mapItems)
+    {
+        if ([view.annotation.title isEqualToString:[NSString stringWithFormat:@"%@", picNote.date]])
+        {
+            self.thePassedPicNote = picNote;
+        }
+    }
 }
+
+
+#pragma mark - Tap Gesture Recognizer
+
+- (void)tapTap:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self performSegueWithIdentifier:@"MapAllPicsToIndividualSegue" sender:self];
+
+}
+
 
 #pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ToDetailedViewOfPinAnnotation"])
+    if ([segue.identifier isEqualToString:@"MapAllPicsToIndividualSegue"])
     {
-        //pass the correct data here and populate the image view
-
-        DetailedMapAllPicsNotesViewController *DMAPNVC = segue.destinationViewController;
-        DMAPNVC.thePicNote = self.thePicNote;
+        IndividualPicNoteViewController *individualViewController = segue.destinationViewController;
+        individualViewController.thePassedPicNote = self.thePassedPicNote;
+        individualViewController.theNumber = self.theNumber;
     }
 }
 

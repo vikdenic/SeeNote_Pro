@@ -14,7 +14,7 @@
 #import "MapAllPicNotesViewController.h"
 #import "MapIndividualPicNotesController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic)IBOutlet UITableView *tableView;
 @property (weak, nonatomic)IBOutlet UISegmentedControl *segmentedControl;
@@ -22,8 +22,6 @@
 @property (nonatomic, weak)IBOutlet UIButton *floatingButton;
 
 @property (nonatomic, strong) UIImagePickerController *cameraController;
-
-@property NSIndexPath *theIndexPath;
 
 @end
 
@@ -114,12 +112,13 @@
     cell.cellImageView.backgroundColor = [UIColor orangeColor];
 
     cell.commentTextView.hidden = YES;
-    cell.commentTextView.text = picNote.comment;
 
-    self.theIndexPath = indexPath;
+    cell.commentTextView.text = picNote.comment;
     cell.cellImageView.tag = indexPath.row;
 
-
+    CGRect frame = cell.commentTextView.frame;
+    frame.size.height = cell.commentTextView.contentSize.height;
+    cell.commentTextView.frame = frame;
 
     //double tap to like
     if (cell.cellImageView.gestureRecognizers.count == 0)
@@ -157,8 +156,6 @@
 
     NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
     UIImage *image = [UIImage imageWithData:pngData];
-
-    NSLog(@"height at row:%f", image.size.height);
 
     return image.size.height;
 }
@@ -233,17 +230,13 @@
 
 - (void)tapTap:(UITapGestureRecognizer *)tapGestureRecognizer
 {
-    NSLog(@"Tap!");
     UIImageView *sender = (UIImageView *)tapGestureRecognizer.view;
-
-//    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:self.theIndexPath];
 
     CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
 
     customTableViewCell.commentTextView.hidden = NO;
 
     customTableViewCell.commentTextView.alpha = 0;
-
 
     [UIView animateWithDuration:0.3 animations:^{
         customTableViewCell.commentTextView.alpha = 1;
