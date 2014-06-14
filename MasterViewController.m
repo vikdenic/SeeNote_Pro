@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 
+@property NSIndexPath *theIndexPath;
+
 @end
 
 @implementation MasterViewController
@@ -97,8 +99,6 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.fetchedResultsController.sections[section] numberOfObjects];
-//    return 20;
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,8 +109,36 @@
     // Obtaining image via path
     NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
     UIImage *image = [UIImage imageWithData:pngData];
+
     cell.cellImageView.image = image;
-//    NSLog(@"%@",image);
+    cell.cellImageView.backgroundColor = [UIColor orangeColor];
+
+    cell.commentTextView.hidden = YES;
+    cell.commentTextView.text = picNote.comment;
+
+    self.theIndexPath = indexPath;
+    cell.cellImageView.tag = indexPath.row;
+
+
+
+    //double tap to like
+    if (cell.cellImageView.gestureRecognizers.count == 0)
+    {
+        UITapGestureRecognizer *tapping = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapTap:)];
+        tapping.numberOfTapsRequired = 2;
+        [cell.cellImageView addGestureRecognizer:tapping];
+        cell.cellImageView.userInteractionEnabled = YES;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+
+
+
+
+
+
+
+
 
     cell.categoryLabel.text = picNote.category;
 
@@ -121,6 +149,18 @@
 
 //    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    NSData *pngData = [NSData dataWithContentsOfFile:picNote.path];
+    UIImage *image = [UIImage imageWithData:pngData];
+
+    NSLog(@"height at row:%f", image.size.height);
+
+    return image.size.height;
 }
 
 #pragma mark - Segmented Control
@@ -189,6 +229,47 @@
     }
 }
 
+#pragma mark - Tap Gesture Recognizer
+
+- (void)tapTap:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    NSLog(@"Tap!");
+    UIImageView *sender = (UIImageView *)tapGestureRecognizer.view;
+
+//    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:self.theIndexPath];
+
+    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
+
+    customTableViewCell.commentTextView.hidden = NO;
+
+    customTableViewCell.commentTextView.alpha = 0;
+
+
+    [UIView animateWithDuration:0.3 animations:^{
+        customTableViewCell.commentTextView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateKeyframesWithDuration:0.3 delay:1.2 options:0 animations:^{
+            customTableViewCell.commentTextView.alpha = 0;
+        } completion:^(BOOL finished) {
+            customTableViewCell.commentTextView.hidden = YES;
+        }];
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //throwin it in
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
@@ -199,11 +280,7 @@
 
 - (IBAction)unwindSegueToMasterViewController:(UIStoryboardSegue *)sender
 {
-
-    SaveViewController *saveVC = sender.sourceViewController;
-    self.managedObjectContextMaster = saveVC.managedObjectContextSave;
     [self load];
-//    NSLog(@"%@",self.managedObjectContextMaster);
 }
 
 - (IBAction)unwindSegueToMasterViewControllerOnCancel:(UIStoryboardSegue *)sender

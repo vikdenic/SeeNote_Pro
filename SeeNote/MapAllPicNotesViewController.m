@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Picnote.h"
 #import "DetailedMapAllPicsNotesViewController.h"
+#import "PicNoteAnnotation.h"
 
 @interface MapAllPicNotesViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -50,14 +51,11 @@
 
     for (Picnote *picnote in self.mapItems)
     {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
+        PicNoteAnnotation *annotation = [[PicNoteAnnotation alloc]init];
         annotation.coordinate = CLLocationCoordinate2DMake(picnote.latitude, picnote.longitude);
         annotation.title = [NSString stringWithFormat:@"%@", picnote.date];
         annotation.subtitle = picnote.category;
-
-        NSString *path = picnote.path;
-
-//        self.thePicNote = [UIImage imageWithData:picnote.photo];
+        annotation.picPath = picnote.path;
 
         [self.mapView addAnnotation:annotation];
     }
@@ -78,32 +76,29 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    static NSString *identifier = @"MyLocation";
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
 
-    MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    PicNoteAnnotation *annot = (PicNoteAnnotation *)annotation;
 
-//    self.number++;
+    MKAnnotationView *annotationView = [[MKAnnotationView alloc]initWithAnnotation:annot reuseIdentifier:nil];
 
-//    NSLog(@"%i",self.number);
-//
-//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-//        annotationView.enabled = YES;
-//        annotationView.canShowCallout = YES;
-//
-//
-//                 Picnote *picnote = [self.mapItems objectAtIndex:self.number];
-//
-//                 UIImage *tempImage = [UIImage imageWithData:picnote.photo];
-//
-//                 CGSize sacleSize = CGSizeMake(50, 50);
-//                 UIGraphicsBeginImageContextWithOptions(sacleSize, NO, 0.0);
-//                 [tempImage drawInRect:CGRectMake(0, 0, sacleSize.width, sacleSize.height)];
-//                 UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-//                 UIGraphicsEndImageContext();
-//
-//                 annotationView.image = resizedImage;
+    NSData *data = [NSData dataWithContentsOfFile:annot.picPath];
 
-        return annotationView;
+    UIImage *image = [UIImage imageWithData:data];
+
+    CGSize sacleSize = CGSizeMake(50, 50);
+    UIGraphicsBeginImageContextWithOptions(sacleSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, sacleSize.width, sacleSize.height)];
+    UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    annotationView.image = resizedImage;
+    annotationView.layer.cornerRadius = resizedImage.size.width/2;
+    annotationView.layer.borderColor = [[UIColor colorWithRed:202/255.0 green:250/255.0 blue:53/255.0 alpha:1] CGColor];
+    annotationView.layer.borderWidth = 2.0;
+    annotationView.clipsToBounds = YES;
+
+    return annotationView;
 }
 
 

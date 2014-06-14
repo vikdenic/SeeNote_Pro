@@ -60,13 +60,14 @@
     //here we need to save both the picture and the text to that instance of an entity object and hook the action up
     Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContextSave];
 
-    // Compressing and converting user's image
-
-    CGSize scaleSize = CGSizeMake(150, 150);
+//    Compressing and converting user's image
+    CGSize scaleSize = CGSizeMake((self.imageTaken.size.width/12), (self.imageTaken.size.height/12));
     UIGraphicsBeginImageContextWithOptions(scaleSize, NO, 0.0);
     [self.imageTaken drawInRect:CGRectMake(0, 0, scaleSize.width, scaleSize.height)];
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+
+    NSLog(@"resized image:height:%f width:%f", resizedImage.size.height, resizedImage.size.width);
 
     NSData *pngData = UIImagePNGRepresentation(resizedImage);
 
@@ -75,11 +76,10 @@
 
     // Need to assign filePath a unique fileName everytime
 
-    NSString *uniqueFileName = [NSString stringWithFormat:@"image-%ul.png", (NSUInteger)([[NSDate date] timeIntervalSince1970]*10.0)];
-
-    NSLog(@"%@",uniqueFileName);
+    NSString *uniqueFileName = [NSString stringWithFormat:@"image-%lul.png", (unsigned long)([[NSDate date] timeIntervalSince1970])];
 
     NSString *filePath = [documentsPath stringByAppendingPathComponent:uniqueFileName]; //Add the file name
+
     [pngData writeToFile:filePath atomically:YES]; //Write the file
 
     picnote.path = filePath;
@@ -90,8 +90,6 @@
     picnote.longitude = self.longitude;
 
     [self.managedObjectContextSave save:nil];
-//    NSLog(@"SAVEVIEW MANOBJCOUNT IS %d",self.managedObjectContextSave.registeredObjects.count);
-//    NSLog(@"%@",picnote.photo);
 }
 
 #pragma mark - Core Location

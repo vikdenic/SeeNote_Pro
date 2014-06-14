@@ -12,6 +12,7 @@
 		60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */; };
 		60765E4E194178D100C75C13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60765E4D194178D100C75C13 /* MapKit.framework */; };
 		60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */; };
+		60E103F9194B7944003D10C4 /* PicNoteAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */; };
 		93840D071943BE8800C62B44 /* MapIndividualPicNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */; };
 		93C7F7A719414A0400D02AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A619414A0400D02AC9 /* Foundation.framework */; };
 		93C7F7A919414A0400D02AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */; };
@@ -55,6 +56,8 @@
 		60765E4F19418A4300C75C13 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualPicNoteViewController.h; sourceTree = "<group>"; };
 		60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualPicNoteViewController.m; sourceTree = "<group>"; };
+		60E103F7194B7944003D10C4 /* PicNoteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicNoteAnnotation.h; sourceTree = "<group>"; };
+		60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicNoteAnnotation.m; sourceTree = "<group>"; };
 		93840D051943BE8800C62B44 /* MapIndividualPicNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapIndividualPicNotesController.h; sourceTree = "<group>"; };
 		93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapIndividualPicNotesController.m; sourceTree = "<group>"; };
 		93C7F7A319414A0400D02AC9 /* SeeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,8 @@
 				93840D061943BE8800C62B44 /* MapIndividualPicNotesController.m */,
 				60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */,
 				60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */,
+				60E103F7194B7944003D10C4 /* PicNoteAnnotation.h */,
+				60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */,
 				60765E47194158F700C75C13 /* SaveViewController.h */,
 				60765E48194158F700C75C13 /* SaveViewController.m */,
 				60691DD8194A75BE008106A0 /* DetailedMapAllPicsNotesViewController.h */,
@@ -250,7 +255,7 @@
 				ORGANIZATIONNAME = "Vik and Blake";
 				TargetAttributes = {
 					93C7F7A219414A0400D02AC9 = {
-						DevelopmentTeam = 3DJPBY6593;
+						DevelopmentTeam = ZNAFR9K9ZC;
 					};
 					93C7F7C219414A0400D02AC9 = {
 						TestTargetID = 93C7F7A219414A0400D02AC9;
@@ -308,6 +313,7 @@
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
 				60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
+				60E103F9194B7944003D10C4 /* PicNoteAnnotation.m in Sources */,
 				93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */,
 				93C7F7B519414A0400D02AC9 /* main.m in Sources */,
 				60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */,
@@ -435,6 +441,7 @@
 				INFOPLIST_FILE = "SeeNote/SeeNote-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -451,6 +458,7 @@
 				INFOPLIST_FILE = "SeeNote/SeeNote-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
