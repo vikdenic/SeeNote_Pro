@@ -29,12 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.fetchedResultsController.delegate = self;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView reloadData];
+    self.fetchedResultsController.delegate = self;
 
     self.cameraController = [[UIImagePickerController alloc] init];
     self.cameraController.delegate = self;
@@ -50,6 +50,7 @@
 -(void)load
 {
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
+//    request.includesPendingChanges = NO;
     NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"path" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
     self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
@@ -110,8 +111,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.fetchedResultsController.fetchedObjects.count;
+//    return self.fetchedResultsController.fetchedObjects.count;
+    return [self.fetchedResultsController.sections[section] numberOfObjects];
 }
+
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -142,7 +146,7 @@
         [cell.cellImageView addGestureRecognizer:tapping];
         cell.cellImageView.userInteractionEnabled = YES;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     cell.categoryLabel.text = picNote.category;
 
@@ -155,11 +159,26 @@
     return cell;
 }
 
+#pragma mark - Swipe To Delete
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [myDataSource removeObjectAtIndex:indexPath.row];
-//        [myTable reloadData];
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.tableView beginUpdates];
+
+    [self.managedObjectContextMaster deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    [self.managedObjectContextMaster save:nil];
+
+        [self.tableView endUpdates];
+    }
+    [self load];
+    [self.tableView reloadData];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -274,11 +293,11 @@
     }];
 }
 
-//throwin it in
--(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
-{
-    [self.tableView reloadData];
-}
+////throwin it in
+//-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+//{
+//    [self.tableView reloadData];
+//}
 
 #pragma mark- Unwind Segue
 

@@ -36,7 +36,6 @@
 
     self.theNumber = 1;
 
-
     self.mapItems = [NSArray array];
 
     self.locationManager = [[CLLocationManager alloc] init];
@@ -80,26 +79,29 @@
 - (void)delayForZoom
 {
 
-    if (self.numberForDetermination == 2)
-        //coming from individual to the map so to zoom in on the location of the picture the user was viewing
-    {
-        MKCoordinateRegion mapRegion;
-        mapRegion.center = CLLocationCoordinate2DMake(self.latitudeFromIndividual, self.longitudeFromIndividual);
-        mapRegion.span.latitudeDelta = 0.1;
-        mapRegion.span.longitudeDelta = 0.1;
-        [self.mapView setRegion:mapRegion animated: YES];
+//    if (self.numberForDetermination == 2)
+//
+//        //coming from individual to the map so to zoom in on the location of the picture the user was viewing
+//    {
+//        MKCoordinateRegion mapRegion;
+//        mapRegion.center = CLLocationCoordinate2DMake(self.latitudeFromIndividual, self.longitudeFromIndividual);
+//        mapRegion.span.latitudeDelta = 0.1;
+//        mapRegion.span.longitudeDelta = 0.1;
+//        [self.mapView setRegion:mapRegion animated: YES];
+//
+//
+//    } else {
 
-
-    } else {
         MKCoordinateRegion mapRegion;
         mapRegion.center = self.location.coordinate;
         mapRegion.span.latitudeDelta = 0.25;
         mapRegion.span.longitudeDelta = 0.25;
         [self.mapView setRegion:mapRegion animated: YES];
     }
-}
+//}
 
-#pragma mark - Map 
+
+#pragma mark - Map
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -221,6 +223,15 @@
 {
     
 }
+
+- (IBAction)unwindSegueToMapFromIndividualThatWasFromMaster:(UIStoryboardSegue *)sender
+{
+    IndividualPicNoteViewController *individualPicNoteViewController = sender.sourceViewController;
+    self.latitudeFromIndividual = individualPicNoteViewController.latitudeFromIndividual;
+    self.longitudeFromIndividual = individualPicNoteViewController.longitudeFromIndividual;
+    self.numberForDetermination = individualPicNoteViewController.numberForDetermination;
+}
+
 
 
 @end

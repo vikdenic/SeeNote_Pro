@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *theButton1;
 @property (weak, nonatomic) IBOutlet UIButton *theButton2;
 
+@property (weak, nonatomic) IBOutlet UIButton *theMapButton1;
+@property (weak, nonatomic) IBOutlet UIButton *theMapButton2;
+
 
 
 @end
@@ -66,6 +69,9 @@
         self.latitudeFromIndividual = self.thePassedPicNote.latitude;
         self.longitudeFromIndividual = self.thePassedPicNote.longitude;
 
+        self.theMapButton1.hidden = YES;
+        self.theMapButton2.hidden = NO;
+
     } else {
         //means you came from master
 
@@ -87,6 +93,9 @@
 
         self.latitudeFromIndividual = self.picNoteFromMasterToIndividual.latitude;
         self.longitudeFromIndividual = self.picNoteFromMasterToIndividual.longitude;
+
+        self.theMapButton1.hidden = NO;
+//        self.theMapButton2.hidden = YES;
     }
 
 
@@ -130,6 +139,16 @@
     //delete the object, remove it from the managedObjectContent and then reload the tableView on the unwind segue
 }
 
+- (IBAction)onMap2ButtonPressed:(id)sender
+{
+    if (self.numberForDetermination == 2)
+    {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
 //leave save code here
 
 #pragma mark - Text Field and Text View
@@ -148,13 +167,20 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"IndividualToAllMapSegue"])
-    {
-        MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
-        mapAllPicNotesViewController.numberForDetermination = self.numberForDetermination;
-        mapAllPicNotesViewController.latitudeFromIndividual = self.latitudeFromIndividual;
-        mapAllPicNotesViewController.longitudeFromIndividual = self.longitudeFromIndividual;
-    }
+//    if ([segue.identifier isEqualToString:@"ToMapAllFromIndividualSegue"])
+//    {
+//        MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
+//        mapAllPicNotesViewController.numberForDetermination = self.numberForDetermination;
+//        mapAllPicNotesViewController.latitudeFromIndividual = self.latitudeFromIndividual;
+//        mapAllPicNotesViewController.longitudeFromIndividual = self.longitudeFromIndividual;
+
+//    if ([segue.identifier isEqualToString:@"FromIndividualToMapSegue"])
+//    {
+//        MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
+//        mapAllPicNotesViewController.numberForDetermination = self.numberForDetermination;
+//        mapAllPicNotesViewController.latitudeFromIndividual = self.latitudeFromIndividual;
+//        mapAllPicNotesViewController.longitudeFromIndividual = self.longitudeFromIndividual;
+//    }
 
 }
 

@@ -7,7 +7,7 @@
         <!--Map All Pic Notes View Controller-->
         <scene sceneID="5Ds-sG-Hnk">
             <objects>
-                <viewController id="OsF-ZB-uVc" customClass="MapAllPicNotesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="OsF-ZB-uVc" customClass="MapAllPicNotesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lh5-AY-XdP"/>
                         <viewControllerLayoutGuide type="bottom" id="tEN-Sw-QN8"/>
@@ -44,7 +44,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzU-hh-4pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sbD-QJ-4Hd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="848" y="-1332"/>
+            <point key="canvasLocation" x="841" y="-1720"/>
         </scene>
         <!--Individual Pic Note View Controller-->
         <scene sceneID="hmU-JW-jUo">
@@ -115,14 +115,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QS-d7-JNW">
-                                <rect key="frame" x="191" y="20" width="66" height="29"/>
+                                <rect key="frame" x="191" y="21" width="66" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="map_image">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="OsF-ZB-uVc" kind="modal" identifier="IndividualToAllMapSegue" id="CFD-62-O3r"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X64-rC-zoQ">
                                 <rect key="frame" x="20" y="20" width="46" height="30"/>
@@ -152,6 +149,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuw-g5-9xK">
+                                <rect key="frame" x="74" y="13" width="66" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="map_image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onMap2ButtonPressed:" destination="QmS-hB-Mem" eventType="touchUpInside" id="81t-NM-Mnv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -165,6 +173,8 @@
                         <outlet property="tagTextField" destination="YkM-nR-bvJ" id="fsn-Op-lbe"/>
                         <outlet property="theButton1" destination="qnL-OJ-pCg" id="TRY-aD-5Wt"/>
                         <outlet property="theButton2" destination="X64-rC-zoQ" id="eoh-Nr-PGo"/>
+                        <outlet property="theMapButton1" destination="3QS-d7-JNW" id="kDW-g7-ZXF"/>
+                        <outlet property="theMapButton2" destination="cuw-g5-9xK" id="fWR-9b-Dal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFW-et-Q2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,6 +453,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7mb-ds-0m0"/>
-        <segue reference="CFD-62-O3r"/>
     </inferredMetricsTieBreakers>
 </document>
