@@ -24,5 +24,7 @@
 
 @property Picnote *picnote;
 
+@property Picnote *picNoteFromMasterToIndividual;
+
 
 @end

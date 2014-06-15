@@ -17,5 +17,12 @@
 @property Picnote *thePassedPicNote;
 @property int theNumber;
 
+@property Picnote *picNoteFromMasterToIndividual;
+
+@property int numberForDetermination;
+
+@property double latitudeFromIndividual;
+@property double longitudeFromIndividual;
+
 
 @end

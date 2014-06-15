@@ -8,6 +8,7 @@
 
 #import "IndividualPicNoteViewController.h"
 #import "Picnote.h"
+#import "MapAllPicNotesViewController.h"
 
 @interface IndividualPicNoteViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *theButton1;
@@ -38,16 +40,53 @@
 {
     [super viewWillAppear:animated];
 
+    self.numberForDetermination = 2;
+
     self.commentTextView.text = @"Write Description Here";
 
     if (self.theNumber ==1)
+        //means you came from Map
     {
         self.theButton1.hidden = NO;
         self.theButton2.hidden = YES;
+
+        NSData *pngData = [NSData dataWithContentsOfFile:self.thePassedPicNote.path];
+        UIImage *image = [UIImage imageWithData:pngData];
+
+        self.imageView.image = image;
+        self.commentTextView.text = self.thePassedPicNote.comment;
+        self.tagTextField.text = [NSString stringWithFormat:@"Tag: %@",self.thePassedPicNote.category];
+
+        NSDateFormatter *date = [[NSDateFormatter alloc] init];
+        [date setDateFormat:@"MM-dd-yyyy"];
+
+        NSString *theDate = [date stringFromDate:self.thePassedPicNote.date];
+        self.dateLabel.text = [NSString stringWithFormat:@"🕑 %@", theDate];
+
+        self.latitudeFromIndividual = self.thePassedPicNote.latitude;
+        self.longitudeFromIndividual = self.thePassedPicNote.longitude;
+
     } else {
+        //means you came from master
 
         self.theButton1.hidden = YES;
         self.theButton2.hidden = NO;
+
+        NSData *pngData = [NSData dataWithContentsOfFile:self.picNoteFromMasterToIndividual.path];
+        UIImage *image = [UIImage imageWithData:pngData];
+
+        self.imageView.image = image;
+        self.commentTextView.text = self.picNoteFromMasterToIndividual.comment;
+        self.tagTextField.text = [NSString stringWithFormat:@"Tag: %@",self.picNoteFromMasterToIndividual.category];
+
+        NSDateFormatter *date = [[NSDateFormatter alloc] init];
+        [date setDateFormat:@"MM-dd-yyyy"];
+
+        NSString *theDate = [date stringFromDate:self.picNoteFromMasterToIndividual.date];
+        self.dateLabel.text = [NSString stringWithFormat:@"🕑 %@", theDate];
+
+        self.latitudeFromIndividual = self.picNoteFromMasterToIndividual.latitude;
+        self.longitudeFromIndividual = self.picNoteFromMasterToIndividual.longitude;
     }
 
 
@@ -58,14 +97,7 @@
     self.editing = NO;
 
 
-    NSData *pngData = [NSData dataWithContentsOfFile:self.thePassedPicNote.path];
-    UIImage *image = [UIImage imageWithData:pngData];
-
-    self.imageView.image = image;
-    self.commentTextView.text = self.thePassedPicNote.comment;
-    self.tagTextField.text = self.thePassedPicNote.category;
 }
-
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -111,6 +143,26 @@
 {
     self.tagTextField.text = nil;
 }
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"IndividualToAllMapSegue"])
+    {
+        MapAllPicNotesViewController *mapAllPicNotesViewController = segue.destinationViewController;
+        mapAllPicNotesViewController.numberForDetermination = self.numberForDetermination;
+        mapAllPicNotesViewController.latitudeFromIndividual = self.latitudeFromIndividual;
+        mapAllPicNotesViewController.longitudeFromIndividual = self.longitudeFromIndividual;
+    }
+
+}
+
+
+
+
+
+
 
 
 @end

@@ -12,18 +12,15 @@
 #import "SaveViewController.h"
 #import "IndividualPicNoteViewController.h"
 #import "MapAllPicNotesViewController.h"
-#import "MapIndividualPicNotesController.h"
 
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic)IBOutlet UITableView *tableView;
-@property (weak, nonatomic)IBOutlet UISegmentedControl *segmentedControl;
-@property (nonatomic, weak)IBOutlet UIView *floatingView;
-@property (nonatomic, weak)IBOutlet UIButton *floatingButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 
-@property NSArray *thisArray;
+@property NSIndexPath *indexPath;
 
 @end
 
@@ -34,21 +31,6 @@
     [super viewDidLoad];
     self.fetchedResultsController.delegate = self;
 }
-
--(void)load
-{
-        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
-        NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"path" ascending:YES];
-        request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
-
-        [self.fetchedResultsController performFetch:nil];
-
-    NSLog(@"%i", self.fetchedResultsController.fetchedObjects.count);
-
-        [self.managedObjectContextMaster save:nil];
-        [self.tableView reloadData];
-    }
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -65,17 +47,24 @@
     [self load];
 }
 
+-(void)load
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"path" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
+
+    [self.fetchedResultsController performFetch:nil];
+    [self.managedObjectContextMaster save:nil];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Image Picker
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:^{
         //back to masterViewController
-    }];
-}
-
-- (IBAction)buttonTapped:(id)sender {
-
-    [self presentViewController:self.cameraController animated:NO completion:^{
-        //
     }];
 }
 
@@ -96,27 +85,36 @@
     }];
 }
 
+#pragma mark - Action Methods
+
+- (IBAction)buttonTapped:(id)sender {
+
+    [self presentViewController:self.cameraController animated:NO completion:^{
+        //
+    }];
+}
+
+- (IBAction)onIndividualButtonTapped:(UIButton *)sender
+{
+//    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:[sender tag]];
+    //super sweet method above
+
+    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
+
+    self.picNoteFromMasterToIndividual = picNote;
+}
+
+
 #pragma mark - Table View
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.fetchedResultsController.fetchedObjects.count;
-
 }
-
-
-//for some reason, the section thing isn't working
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return self.fetchedResultsController.fetchedObjects.count;
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    self.tableView.sectionHeaderHeight = 22;
-
     Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -126,9 +124,11 @@
     cell.cellImageView.image = image;
     cell.cellImageView.backgroundColor = [UIColor orangeColor];
 
+    self.indexPath = indexPath;
+
     cell.commentTextView.hidden = YES;
     cell.commentTextView.text = picNote.comment;
-    cell.cellImageView.tag = indexPath.section;
+    cell.cellImageView.tag = indexPath.row;
 
     CGRect frame = cell.commentTextView.frame;
     frame.size.height = cell.commentTextView.contentSize.height;
@@ -146,12 +146,12 @@
 
     cell.categoryLabel.text = picNote.category;
 
-    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"MM/dd/yy"];
-    NSString *formattedDate = [dateFormatter stringFromDate:picNote.date];
-    cell.dateLabel.text = formattedDate;
+    NSDateFormatter *date = [[NSDateFormatter alloc] init];
+    [date setDateFormat:@"MM-dd-yyyy"];
 
-//    cell.dateLabel.text = [NSString stringWithFormat:@"%@",picNote.date];
+    NSString *formattedDate = [date stringFromDate:picNote.date];
+    cell.dateLabel.text = [NSString stringWithFormat:@"🕑 %@", formattedDate];
+
     return cell;
 }
 
@@ -183,13 +183,6 @@
 //    return image.size.height;
 //}
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//
-//    Picnote *picNote = [self.thisArray objectAtIndex:section];
-//
-//    return [NSString stringWithFormat:@"Time Taken: %@", picNote.date];
-//}
 
 #pragma mark - Segmented Control
 
@@ -242,19 +235,20 @@
 
         individualPicNoteViewController.managedObjectContext = self.managedObjectContextMaster;
         individualPicNoteViewController.fetchedResultsController = self.fetchedResultsController;
+        individualPicNoteViewController.picNoteFromMasterToIndividual = self.picNoteFromMasterToIndividual;
 
-
-    } else if([segue.identifier isEqual: @"MapSegue"])
-    {
-        MapIndividualPicNotesController *mapIndividualPicNotesViewController = segue.destinationViewController;
-
-        mapIndividualPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
-        mapIndividualPicNotesViewController.fetchedResultsController = self.fetchedResultsController;
-
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Picnote *pictnote = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
-        mapIndividualPicNotesViewController.picnote = pictnote;
-    }
+//    } else if([segue.identifier isEqual: @"MapSegue"])
+//    {
+//        MapIndividualPicNotesController *mapIndividualPicNotesViewController = segue.destinationViewController;
+//
+//        mapIndividualPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
+//        mapIndividualPicNotesViewController.fetchedResultsController = self.fetchedResultsController;
+//
+//        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+//        Picnote *pictnote = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+//        mapIndividualPicNotesViewController.picnote = pictnote;
+//    }
+}
 }
 
 #pragma mark - Tap Gesture Recognizer
@@ -263,7 +257,7 @@
 {
     UIImageView *sender = (UIImageView *)tapGestureRecognizer.view;
 
-    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
+    CustomTableViewCell *customTableViewCell = (id)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
 
     customTableViewCell.commentTextView.hidden = NO;
 
@@ -279,20 +273,6 @@
         }];
     }];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //throwin it in
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
