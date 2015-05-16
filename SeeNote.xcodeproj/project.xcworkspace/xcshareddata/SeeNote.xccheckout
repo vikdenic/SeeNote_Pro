@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7DA5024B-24A9-4DC9-B15F-89389A4214EC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SeeNote</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>13F5AB0C796F27D564CAE2F6FFA6C03D609361DF</key>
+		<string>https://github.com/vikdenic/SeeNote_Pro.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SeeNote.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>13F5AB0C796F27D564CAE2F6FFA6C03D609361DF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/vikdenic/SeeNote_Pro.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>13F5AB0C796F27D564CAE2F6FFA6C03D609361DF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>13F5AB0C796F27D564CAE2F6FFA6C03D609361DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SeeNote_Pro</string>
+		</dict>
+	</array>
+</dict>
+</plist>

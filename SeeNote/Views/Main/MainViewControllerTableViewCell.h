@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomTableViewCell : UITableViewCell
+@interface MainViewControllerTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (weak, nonatomic) IBOutlet UIButton *individualButton;
-
 
 @end

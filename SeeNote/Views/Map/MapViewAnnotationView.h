@@ -8,8 +8,8 @@
 
 #import <MapKit/MapKit.h>
 
-@interface PicNoteAnnotationView : MKAnnotationView
+@interface MapViewAnnotationView : MKAnnotationView
 
-@property NSString *path;
+@property (strong, nonatomic) NSString *path;
 
 @end

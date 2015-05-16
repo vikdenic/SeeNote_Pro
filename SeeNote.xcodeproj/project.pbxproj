@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		606AAF93194D1FB300CB7093 /* PicNoteAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 606AAF92194D1FB300CB7093 /* PicNoteAnnotationView.m */; };
-		60765E49194158F700C75C13 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E48194158F700C75C13 /* SaveViewController.m */; };
-		60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */; };
+		2597A6BD1B07E33900F3FF49 /* Picnote.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6BC1B07E33900F3FF49 /* Picnote.m */; };
+		2597A6C21B07E34200F3FF49 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6BF1B07E34200F3FF49 /* MainViewController.m */; };
+		2597A6C31B07E34200F3FF49 /* MainViewControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6C11B07E34200F3FF49 /* MainViewControllerTableViewCell.m */; };
+		2597A6CA1B07E34F00F3FF49 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6C51B07E34F00F3FF49 /* MapAnnotation.m */; };
+		2597A6CB1B07E34F00F3FF49 /* MapViewAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6C71B07E34F00F3FF49 /* MapViewAnnotationView.m */; };
+		2597A6CC1B07E34F00F3FF49 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6C91B07E34F00F3FF49 /* MapViewController.m */; };
+		2597A6CF1B07E35900F3FF49 /* SavePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6CE1B07E35900F3FF49 /* SavePhotoViewController.m */; };
+		2597A6D21B07E36400F3FF49 /* IndividualPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597A6D11B07E36400F3FF49 /* IndividualPhotoViewController.m */; };
 		60765E4E194178D100C75C13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60765E4D194178D100C75C13 /* MapKit.framework */; };
-		60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */; };
-		60E103F9194B7944003D10C4 /* PicNoteAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */; };
 		93C7F7A719414A0400D02AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A619414A0400D02AC9 /* Foundation.framework */; };
 		93C7F7A919414A0400D02AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */; };
 		93C7F7AB19414A0400D02AC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C7F7AA19414A0400D02AC9 /* UIKit.framework */; };
@@ -29,9 +32,6 @@
 		93C7F7D019414A0400D02AC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93C7F7CE19414A0400D02AC9 /* InfoPlist.strings */; };
 		93C7F7D219414A0400D02AC9 /* SeeNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7D119414A0400D02AC9 /* SeeNoteTests.m */; };
 		93C7F7DC19414A2700D02AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C7F7DB19414A2700D02AC9 /* Main.storyboard */; };
-		93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7DE19414AE200D02AC9 /* MasterViewController.m */; };
-		93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */; };
-		93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7F7E4194155C400D02AC9 /* Picnote.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,18 +45,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		606AAF91194D1FB300CB7093 /* PicNoteAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicNoteAnnotationView.h; sourceTree = "<group>"; };
-		606AAF92194D1FB300CB7093 /* PicNoteAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicNoteAnnotationView.m; sourceTree = "<group>"; };
-		60765E47194158F700C75C13 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
-		60765E48194158F700C75C13 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
-		60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAllPicNotesViewController.h; sourceTree = "<group>"; };
-		60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAllPicNotesViewController.m; sourceTree = "<group>"; };
+		2597A6BB1B07E33900F3FF49 /* Picnote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Picnote.h; path = "Views/Core Data/Picnote.h"; sourceTree = "<group>"; };
+		2597A6BC1B07E33900F3FF49 /* Picnote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picnote.m; path = "Views/Core Data/Picnote.m"; sourceTree = "<group>"; };
+		2597A6BE1B07E34200F3FF49 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Views/Main/MainViewController.h; sourceTree = "<group>"; };
+		2597A6BF1B07E34200F3FF49 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Views/Main/MainViewController.m; sourceTree = "<group>"; };
+		2597A6C01B07E34200F3FF49 /* MainViewControllerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewControllerTableViewCell.h; path = Views/Main/MainViewControllerTableViewCell.h; sourceTree = "<group>"; };
+		2597A6C11B07E34200F3FF49 /* MainViewControllerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewControllerTableViewCell.m; path = Views/Main/MainViewControllerTableViewCell.m; sourceTree = "<group>"; };
+		2597A6C41B07E34F00F3FF49 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotation.h; path = Views/Map/MapAnnotation.h; sourceTree = "<group>"; };
+		2597A6C51B07E34F00F3FF49 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotation.m; path = Views/Map/MapAnnotation.m; sourceTree = "<group>"; };
+		2597A6C61B07E34F00F3FF49 /* MapViewAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewAnnotationView.h; path = Views/Map/MapViewAnnotationView.h; sourceTree = "<group>"; };
+		2597A6C71B07E34F00F3FF49 /* MapViewAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewAnnotationView.m; path = Views/Map/MapViewAnnotationView.m; sourceTree = "<group>"; };
+		2597A6C81B07E34F00F3FF49 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Views/Map/MapViewController.h; sourceTree = "<group>"; };
+		2597A6C91B07E34F00F3FF49 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Views/Map/MapViewController.m; sourceTree = "<group>"; };
+		2597A6CD1B07E35900F3FF49 /* SavePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavePhotoViewController.h; path = Views/Save/SavePhotoViewController.h; sourceTree = "<group>"; };
+		2597A6CE1B07E35900F3FF49 /* SavePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavePhotoViewController.m; path = Views/Save/SavePhotoViewController.m; sourceTree = "<group>"; };
+		2597A6D01B07E36400F3FF49 /* IndividualPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndividualPhotoViewController.h; path = Views/Individual/IndividualPhotoViewController.h; sourceTree = "<group>"; };
+		2597A6D11B07E36400F3FF49 /* IndividualPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndividualPhotoViewController.m; path = Views/Individual/IndividualPhotoViewController.m; sourceTree = "<group>"; };
 		60765E4D194178D100C75C13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		60765E4F19418A4300C75C13 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualPicNoteViewController.h; sourceTree = "<group>"; };
-		60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualPicNoteViewController.m; sourceTree = "<group>"; };
-		60E103F7194B7944003D10C4 /* PicNoteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicNoteAnnotation.h; sourceTree = "<group>"; };
-		60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicNoteAnnotation.m; sourceTree = "<group>"; };
 		93C7F7A319414A0400D02AC9 /* SeeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7F7A619414A0400D02AC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93C7F7A819414A0400D02AC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,12 +82,6 @@
 		93C7F7CF19414A0400D02AC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93C7F7D119414A0400D02AC9 /* SeeNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeeNoteTests.m; sourceTree = "<group>"; };
 		93C7F7DB19414A2700D02AC9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
-		93C7F7DD19414AE200D02AC9 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
-		93C7F7DE19414AE200D02AC9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
-		93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = ../CustomTableViewCell.h; sourceTree = "<group>"; };
-		93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = ../CustomTableViewCell.m; sourceTree = "<group>"; };
-		93C7F7E3194155C400D02AC9 /* Picnote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picnote.h; sourceTree = "<group>"; };
-		93C7F7E4194155C400D02AC9 /* Picnote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picnote.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +111,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2597A6B61B07DB0400F3FF49 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				2597A6C41B07E34F00F3FF49 /* MapAnnotation.h */,
+				2597A6C51B07E34F00F3FF49 /* MapAnnotation.m */,
+				2597A6C61B07E34F00F3FF49 /* MapViewAnnotationView.h */,
+				2597A6C71B07E34F00F3FF49 /* MapViewAnnotationView.m */,
+				2597A6C81B07E34F00F3FF49 /* MapViewController.h */,
+				2597A6C91B07E34F00F3FF49 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		2597A6B71B07DB1300F3FF49 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2597A6C01B07E34200F3FF49 /* MainViewControllerTableViewCell.h */,
+				2597A6C11B07E34200F3FF49 /* MainViewControllerTableViewCell.m */,
+				2597A6BE1B07E34200F3FF49 /* MainViewController.h */,
+				2597A6BF1B07E34200F3FF49 /* MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		2597A6B81B07DC3A00F3FF49 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				93C7F7BA19414A0400D02AC9 /* SeeNote.xcdatamodeld */,
+				2597A6BB1B07E33900F3FF49 /* Picnote.h */,
+				2597A6BC1B07E33900F3FF49 /* Picnote.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		2597A6B91B07DC5100F3FF49 /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				2597A6CD1B07E35900F3FF49 /* SavePhotoViewController.h */,
+				2597A6CE1B07E35900F3FF49 /* SavePhotoViewController.m */,
+			);
+			name = Save;
+			sourceTree = "<group>";
+		};
+		2597A6BA1B07DC5D00F3FF49 /* Individual */ = {
+			isa = PBXGroup;
+			children = (
+				2597A6D01B07E36400F3FF49 /* IndividualPhotoViewController.h */,
+				2597A6D11B07E36400F3FF49 /* IndividualPhotoViewController.m */,
+			);
+			name = Individual;
+			sourceTree = "<group>";
+		};
 		93C7F79A19414A0400D02AC9 = {
 			isa = PBXGroup;
 			children = (
@@ -147,27 +199,15 @@
 		93C7F7AE19414A0400D02AC9 /* SeeNote */ = {
 			isa = PBXGroup;
 			children = (
-				93C7F7E019414C0900D02AC9 /* CustomTableViewCell.h */,
-				93C7F7E119414C0900D02AC9 /* CustomTableViewCell.m */,
-				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
-				60D890F11942330F0044CABF /* IndividualPicNoteViewController.h */,
-				60D890F21942330F0044CABF /* IndividualPicNoteViewController.m */,
-				60E103F7194B7944003D10C4 /* PicNoteAnnotation.h */,
-				60E103F8194B7944003D10C4 /* PicNoteAnnotation.m */,
-				60765E47194158F700C75C13 /* SaveViewController.h */,
-				60765E48194158F700C75C13 /* SaveViewController.m */,
-				60765E4A1941775300C75C13 /* MapAllPicNotesViewController.h */,
-				60765E4B1941775300C75C13 /* MapAllPicNotesViewController.m */,
-				606AAF91194D1FB300CB7093 /* PicNoteAnnotationView.h */,
-				606AAF92194D1FB300CB7093 /* PicNoteAnnotationView.m */,
-				93C7F7DD19414AE200D02AC9 /* MasterViewController.h */,
-				93C7F7DE19414AE200D02AC9 /* MasterViewController.m */,
 				93C7F7B719414A0400D02AC9 /* AppDelegate.h */,
 				93C7F7B819414A0400D02AC9 /* AppDelegate.m */,
+				93C7F7DB19414A2700D02AC9 /* Main.storyboard */,
+				2597A6BA1B07DC5D00F3FF49 /* Individual */,
+				2597A6B91B07DC5100F3FF49 /* Save */,
+				2597A6B61B07DB0400F3FF49 /* Map */,
+				2597A6B71B07DB1300F3FF49 /* Main */,
 				93C7F7BD19414A0400D02AC9 /* Images.xcassets */,
-				93C7F7BA19414A0400D02AC9 /* SeeNote.xcdatamodeld */,
-				93C7F7E3194155C400D02AC9 /* Picnote.h */,
-				93C7F7E4194155C400D02AC9 /* Picnote.m */,
+				2597A6B81B07DC3A00F3FF49 /* Core Data */,
 				93C7F7AF19414A0400D02AC9 /* Supporting Files */,
 			);
 			path = SeeNote;
@@ -301,17 +341,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C7F7E5194155C400D02AC9 /* Picnote.m in Sources */,
-				606AAF93194D1FB300CB7093 /* PicNoteAnnotationView.m in Sources */,
-				93C7F7DF19414AE200D02AC9 /* MasterViewController.m in Sources */,
 				93C7F7B919414A0400D02AC9 /* AppDelegate.m in Sources */,
-				60765E4C1941775300C75C13 /* MapAllPicNotesViewController.m in Sources */,
+				2597A6C31B07E34200F3FF49 /* MainViewControllerTableViewCell.m in Sources */,
 				93C7F7BC19414A0400D02AC9 /* SeeNote.xcdatamodeld in Sources */,
-				60E103F9194B7944003D10C4 /* PicNoteAnnotation.m in Sources */,
-				93C7F7E219414C0900D02AC9 /* CustomTableViewCell.m in Sources */,
+				2597A6BD1B07E33900F3FF49 /* Picnote.m in Sources */,
+				2597A6C21B07E34200F3FF49 /* MainViewController.m in Sources */,
+				2597A6CF1B07E35900F3FF49 /* SavePhotoViewController.m in Sources */,
 				93C7F7B519414A0400D02AC9 /* main.m in Sources */,
-				60D890F31942330F0044CABF /* IndividualPicNoteViewController.m in Sources */,
-				60765E49194158F700C75C13 /* SaveViewController.m in Sources */,
+				2597A6CB1B07E34F00F3FF49 /* MapViewAnnotationView.m in Sources */,
+				2597A6CA1B07E34F00F3FF49 /* MapAnnotation.m in Sources */,
+				2597A6D21B07E36400F3FF49 /* IndividualPhotoViewController.m in Sources */,
+				2597A6CC1B07E34F00F3FF49 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
