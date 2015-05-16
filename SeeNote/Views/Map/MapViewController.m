@@ -10,8 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "Picnote.h"
 #import "MapAnnotation.h"
-#import "IndividualPicNoteViewController.h"
+#import "IndividualPhotoViewController.h"
 #import "MapViewAnnotationView.h"
+#import "AppDelegate.h"
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -19,6 +20,9 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *location;
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) NSArray *mapItems;
 
@@ -95,6 +99,8 @@
 }
 
 - (void)populateMap {
+    self.appDelegate = [[AppDelegate alloc] init];
+    self.managedObjectContext = self.appDelegate.managedObjectContext;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
     self.mapItems = [self.managedObjectContext executeFetchRequest:request error:nil];
     
@@ -135,7 +141,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MapAllPicsToIndividualSegue"]) {
-        IndividualPicNoteViewController *individualViewController = segue.destinationViewController;
+         IndividualPhotoViewController *individualViewController = segue.destinationViewController;
         individualViewController.thePassedPicNote = self.thePassedPicNote;
         individualViewController.theNumber = self.theNumber;
     }
@@ -146,7 +152,7 @@
 }
 
 - (IBAction)unwindSegueToMapFromIndividualThatWasFromMaster:(UIStoryboardSegue *)sender {
-    IndividualPicNoteViewController *individualPicNoteViewController = sender.sourceViewController;
+    IndividualPhotoViewController *individualPicNoteViewController = sender.sourceViewController;
     self.latitudeFromIndividual = individualPicNoteViewController.latitudeFromIndividual;
     self.longitudeFromIndividual = individualPicNoteViewController.longitudeFromIndividual;
     self.numberForDetermination = individualPicNoteViewController.numberForDetermination;

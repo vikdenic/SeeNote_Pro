@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Vik and Blake. All rights reserved.
 //
 
-#import "IndividualPicNoteViewController.h"
+#import "IndividualPhotoViewController.h"
 #import "Picnote.h"
 #import "MapViewController.h"
 
-@interface IndividualPicNoteViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface IndividualPhotoViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation IndividualPicNoteViewController
+@implementation IndividualPhotoViewController
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -97,7 +97,7 @@
 #pragma mark - Edit Button
 
 
-- (IBAction)onEditButtonTapped:(id)sender {
+- (IBAction)onEditButtonTapped:(UIButton *)sender {
 
         //here we should enable the textView for editing and then when the user clicks save, save the new text there.
 
@@ -107,17 +107,17 @@
         //this makes the delete button viewable when the user is editing
 
 }
-- (IBAction)onSaveButtonTapped:(id)sender {
+- (IBAction)onSaveButtonTapped:(UIButton *)sender {
     self.deleteButton.alpha = 0;
     self.saveButton.alpha = 0;
     self.editButton.alpha = 1;
 }
 
-- (IBAction)onDeleteButtonTapped:(id)sender {
+- (IBAction)onDeleteButtonTapped:(UIButton *)sender {
     //delete the object, remove it from the managedObjectContent and then reload the tableView on the unwind segue
 }
 
-- (IBAction)onMap2ButtonPressed:(id)sender {
+- (IBAction)onMap2ButtonPressed:(UIButton *)sender {
     if (self.numberForDetermination == 2) {
     [self dismissViewControllerAnimated:YES completion:nil];
     }

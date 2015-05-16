@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface SaveViewController : UIViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContextSave;
+@interface SavePhotoViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) UIImage *imageTaken;
 @property (strong, nonatomic) NSDate *date;

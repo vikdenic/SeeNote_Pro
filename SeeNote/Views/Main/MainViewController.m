@@ -9,18 +9,20 @@
 #import "MainViewController.h"
 #import "MainViewControllerTableViewCell.h"
 #import "Picnote.h"
-#import "SaveViewController.h"
-#import "IndividualPicNoteViewController.h"
 #import "MapViewController.h"
+#import "AppDelegate.h"
+#import "SavePhotoViewController.h"
 
 @interface MainViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
-@property (nonatomic, strong) UIImagePickerController *cameraController;
+@property (strong, nonatomic) UIImagePickerController *cameraController;
 
-@property NSIndexPath *indexPath;
+@property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -42,13 +44,16 @@
 
 - (void)setUpCoreData {
     self.fetchedResultsController.delegate = self;
+    self.appDelegate = [[AppDelegate alloc] init];
+    self.managedObjectContext = self.appDelegate.managedObjectContext;
+    
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Picnote"];
     NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"path" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, nil];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContextMaster sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
     [self.fetchedResultsController performFetch:nil];
-    [self.managedObjectContextMaster save:nil];
+    [self.managedObjectContext save:nil];
 //    [self.tableView reloadData];
 }
 
@@ -69,14 +74,12 @@
 #pragma mark - Action Methods
 
 
-- (IBAction)buttonTapped:(id)sender {
-    [self presentViewController:self.cameraController animated:NO completion:^{
-        //
-    }];
+- (IBAction)onCameraButtonTapped:(UIButton *)sender {
+    [self presentViewController:self.cameraController animated:NO completion:nil];
 }
 
 - (IBAction)onIndividualButtonTapped:(UIButton *)sender {
-    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
+    Picnote *picNote = [self.fetchedResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
     self.picNoteFromMasterToIndividual = picNote;
 }
 
@@ -98,8 +101,6 @@
     cell.cellImageView.image = image;
     cell.cellImageView.backgroundColor = [UIColor orangeColor];
 
-    self.indexPath = indexPath;
-
     cell.commentTextView.hidden = YES;
     cell.commentTextView.text = picNote.comment;
     cell.cellImageView.tag = indexPath.row;
@@ -109,8 +110,7 @@
     cell.commentTextView.frame = frame;
 
     //double tap to like
-    if (cell.cellImageView.gestureRecognizers.count == 0)
-    {
+    if (cell.cellImageView.gestureRecognizers.count == 0) {
         UITapGestureRecognizer *tapping = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapTap:)];
         tapping.numberOfTapsRequired = 2;
         [cell.cellImageView addGestureRecognizer:tapping];
@@ -136,9 +136,9 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.tableView beginUpdates];
 
-    [self.managedObjectContextMaster deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    [self.managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         
-    [self.managedObjectContextMaster save:nil];
+    [self.managedObjectContext save:nil];
         [self.tableView endUpdates];
     }
     
@@ -153,24 +153,10 @@
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqual: @"AllMapSegue"]) {
-        MapViewController *mapAllPicNotesViewController = segue.destinationViewController;
-
-        mapAllPicNotesViewController.managedObjectContext = self.managedObjectContextMaster;
-        mapAllPicNotesViewController.fetchedResultsController = self.fetchedResultsController;
-    } else if([segue.identifier isEqual: @"SaveSegue"]) {
-        SaveViewController *saveViewController = segue.destinationViewController;
-        
+    if([segue.identifier isEqual: @"SaveSegue"]) {
+        SavePhotoViewController *saveViewController = segue.destinationViewController;
         saveViewController.imageTaken = self.imageTaken;
         saveViewController.date = self.date;
-        saveViewController.managedObjectContextSave = self.managedObjectContextMaster;
-        saveViewController.fetchedResultsController = self.fetchedResultsController;
-    } else if([segue.identifier isEqual: @"IndividualSegue"]) {
-        IndividualPicNoteViewController *individualPicNoteViewController = segue.destinationViewController;
-
-        individualPicNoteViewController.managedObjectContext = self.managedObjectContextMaster;
-        individualPicNoteViewController.fetchedResultsController = self.fetchedResultsController;
-        individualPicNoteViewController.picNoteFromMasterToIndividual = self.picNoteFromMasterToIndividual;
     }
 }
 

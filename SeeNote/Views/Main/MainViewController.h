@@ -12,12 +12,10 @@
 
 @interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContextMaster;
 @property (strong, nonatomic) UIImage *imageTaken;
 @property (strong, nonatomic) NSDate *date;
 
-@property Picnote *picnote;
-@property Picnote *picNoteFromMasterToIndividual;
+@property (strong, nonatomic) Picnote *picnote;
+@property (strong, nonatomic) Picnote *picNoteFromMasterToIndividual;
 
 @end

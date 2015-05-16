@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Vik and Blake. All rights reserved.
 //
 
-#import "SaveViewController.h"
+#import "SavePhotoViewController.h"
 #import "Picnote.h"
 #import <MapKit/MapKit.h>
+#import "AppDelegate.h"
 
-@interface SaveViewController () <CLLocationManagerDelegate>
+@interface SavePhotoViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
@@ -19,37 +20,32 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-@property double latitude;
-@property double longitude;
-@property int num;
+@property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
-@implementation SaveViewController
+@implementation SavePhotoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-
-    self.date = [[NSDate alloc]init];
-
-    self.imageView.image = [[UIImage alloc]init];
     self.imageView.image = self.imageTaken;
+    [self setUpCoreLocation];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
-#pragma mark- Action
+#pragma mark- Save
 
-- (IBAction)onSaveButtonTapped:(id)sender {
-    Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContextSave];
+
+- (IBAction)onSaveButtonTapped:(UIButton *)sender {
+    self.appDelegate = [[AppDelegate alloc] init];
+    self.managedObjectContext = self.appDelegate.managedObjectContext;
+
+    Picnote *picnote = [NSEntityDescription insertNewObjectForEntityForName:@"Picnote" inManagedObjectContext:self.managedObjectContext];
 
     CGSize scaleSize = CGSizeMake((self.imageTaken.size.width/12), (self.imageTaken.size.height/12));
     UIGraphicsBeginImageContextWithOptions(scaleSize, NO, 0.0);
@@ -71,17 +67,23 @@
     picnote.comment = self.commentTextView.text;
     picnote.category = self.tagTextField.text;
     picnote.date = self.date;
-    picnote.latitude = self.latitude;
-    picnote.longitude = self.longitude;
-
-    [self.managedObjectContextSave save:nil];
+    picnote.latitude = self.locationManager.location.coordinate.latitude;
+    picnote.longitude = self.locationManager.location.coordinate.longitude;
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - Core Location
 
+
+- (void)setUpCoreLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+}
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    self.latitude = self.locationManager.location.coordinate.latitude;
-    self.longitude = self.locationManager.location.coordinate.longitude;
     [self.locationManager stopUpdatingLocation];
 }
 

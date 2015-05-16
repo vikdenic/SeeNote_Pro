@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Picnote.h"
 
-@interface IndividualPicNoteViewController : UIViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@interface IndividualPhotoViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) Picnote *thePassedPicNote;
 @property (strong, nonatomic) Picnote *picNoteFromMasterToIndividual;

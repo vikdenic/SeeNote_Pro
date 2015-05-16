@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="841" y="-1720"/>
         </scene>
-        <!--Individual Pic Note View Controller-->
+        <!--Individual Photo View Controller-->
         <scene sceneID="hmU-JW-jUo">
             <objects>
-                <viewController storyboardIdentifier="IndividualViewController" id="QmS-hB-Mem" customClass="IndividualPicNoteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IndividualViewController" id="QmS-hB-Mem" customClass="IndividualPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Up-JJ-Yau"/>
                         <viewControllerLayoutGuide type="bottom" id="qIb-ox-nSR"/>
@@ -249,9 +249,6 @@
                                     <segment title="Tag"/>
                                     <segment title="Date"/>
                                 </segments>
-                                <connections>
-                                    <action selector="onSegmentedControlTapped:" destination="29n-Xb-eV4" eventType="valueChanged" id="mpO-Wu-mgD"/>
-                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bK-82-vHM">
                                 <rect key="frame" x="256" y="25" width="44" height="30"/>
@@ -270,7 +267,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="29n-Xb-eV4" eventType="touchUpInside" id="m0h-vD-63g"/>
+                                    <action selector="onCameraButtonTapped:" destination="29n-Xb-eV4" eventType="touchUpInside" id="GIF-mn-reZ"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_image" translatesAutoresizingMaskIntoConstraints="NO" id="gJC-co-8hN">
@@ -326,10 +323,10 @@
             </objects>
             <point key="canvasLocation" x="502" y="15"/>
         </scene>
-        <!--Save View Controller-->
+        <!--Save Photo View Controller-->
         <scene sceneID="fLZ-bb-FMK">
             <objects>
-                <viewController storyboardIdentifier="SaveViewController" id="rEW-yu-DaN" customClass="SaveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SaveViewController" id="rEW-yu-DaN" customClass="SavePhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tSz-lP-OEM"/>
                         <viewControllerLayoutGuide type="bottom" id="7dc-ma-qBj"/>
