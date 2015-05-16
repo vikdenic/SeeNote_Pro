@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 Vik and Blake. All rights reserved.
 //
 
-#import "PicNoteAnnotation.h"
+#import "MapAnnotation.h"
 
-@implementation PicNoteAnnotation
-
+@implementation MapAnnotation
  
 @end

@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Picnote.h"
 
-@interface MapAllPicNotesViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface MapViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property UIImage *thePicNote;
-
-@property Picnote *thePassedPicNote;
+@property (strong, nonatomic) UIImage *thePicNote;
+@property (strong, nonatomic) Picnote *thePassedPicNote;
 
 @property int theNumber;
 @property int numberForDetermination;

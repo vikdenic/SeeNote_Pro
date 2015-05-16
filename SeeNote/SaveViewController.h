@@ -14,8 +14,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContextSave;
 
-@property (nonatomic, strong) UIImage *imageTaken;
-@property (nonatomic, strong) NSDate *date;
-
+@property (strong, nonatomic) UIImage *imageTaken;
+@property (strong, nonatomic) NSDate *date;
 
 @end

@@ -10,21 +10,14 @@
 #import <CoreData/CoreData.h>
 #import "Picnote.h"
 
-@interface MasterViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
-// Efficiently manages the results returned from a Core Data fetch request to provide data for a UITableView object.
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
-// Manages a collection of managed objects.
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContextMaster;
-
-@property (nonatomic, strong) UIImage *imageTaken;
-
+@property (strong, nonatomic) UIImage *imageTaken;
 @property (strong, nonatomic) NSDate *date;
 
 @property Picnote *picnote;
-
 @property Picnote *picNoteFromMasterToIndividual;
-
 
 @end

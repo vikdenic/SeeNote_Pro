@@ -14,12 +14,11 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property Picnote *thePassedPicNote;
-@property int theNumber;
-
-@property Picnote *picNoteFromMasterToIndividual;
+@property (strong, nonatomic) Picnote *thePassedPicNote;
+@property (strong, nonatomic) Picnote *picNoteFromMasterToIndividual;
 
 @property int numberForDetermination;
+@property int theNumber;
 
 @property double latitudeFromIndividual;
 @property double longitudeFromIndividual;
